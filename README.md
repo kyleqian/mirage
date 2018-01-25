@@ -7,6 +7,7 @@ Mirage will be investigating innovations in the VR space, using the Oculus Rift 
 | --- | --- | --- |
 Christian Valadez | <img src="./teamImages/christianValadez.png" width="200" /> | cvaladez@stanford.edu |
 Kyle Qian | <img src="./teamImages/DSC_0742_HEAD.jpg" width="200" /> | kyleqian@stanford.edu |
+Nishtha Bhatia | <img src="./teamImages/NishthaBhatia.jpg" width="200" /> | nishthab@stanford.edu |
 
 # Team Skills Matrix
 | Member | Skills | Personal Traits | Desired Growth | Weaknesses | Hat
