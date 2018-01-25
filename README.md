@@ -5,8 +5,8 @@
 Mirage will be investigating innovations in the VR space, using an Oculus Rift to develop a solution to a current pain-point in VR today. 
 
 # Team Members 
-| | Member | Photograph | Email |
-| --- | --- | --- | --- | --- | ---
+| Member | Photograph | Email |
+| --- | --- | --- |
 Christian Valadez | ![Christian](./teamImages/christianValadez.png) | cvaladez@stanford.edu | 
 
 # Team Skills Matrix
