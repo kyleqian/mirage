@@ -11,10 +11,6 @@ Christian Valadez | ![Christian](./teamImages/christianValadez.png) | cvaladez@s
 | Member | Skills | Personal Traits | Desired Growth | Weaknesses
 | --- | --- | --- | --- | ---
 Christian Valadez | Project Management, full-stack software development, user experience design | Creative, ambitious, entrepreneurial, pragmatic, fun | Management | Stubborn - only sometimes
-Jose | User testing, CAD, Statistical Data | Very sensitive to work environment | Programming | Programming
-Diego | Aesthetics and layout, building prototypes, AutoCAD | Disciplined | LaTeX, Planning Skills | Painting, Programming, Interpersonal communication
-Juan | AI, Machine Learning, Programming, GUI skills | Loves learning new programming languages | MatLAB | bad memory
-Andrew | Machine Learning, Audio recording, Signal processing, Statistical analysis | Strong opinions, very abstract thinker, Big PIcture guy | Rapid prototyping, project management | Sensitive to environments
 
 # Team Communication
 1. Slack: miragevirtual.slack.com 
