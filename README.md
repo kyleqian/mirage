@@ -14,12 +14,14 @@ Nishtha Bhatia | <img src="./teamImages/NishthaBhatia.JPG" width="200" /> | nish
 | --- | --- | --- | --- | --- | --- |
 Christian Valadez | Project Management, full-stack software development, user experience design | Creative, ambitious, entrepreneurial, pragmatic, fun | Management | Stubborn - only sometimes
 Kyle Qian | VR/AR, Unity, full-stack engineering | Introspective, critical, deadpan | UX design, UX testing, design documentation | Overly introspective, overly critical, overly deadpan | Black
+Nishtha Bhatia | Full-stack software development, product management, human-computer interaction | Organized, empathetic, happy | Large scale project development and documentation, clean usability design | Learning to ruthlessly prioritize | Yellow and Green (tie)
 
 # Team Communication
-1. Slack: miragevirtual.slack.com 
-2. Google Drive for documents 
-3. Facebook Messenger for inter-team communication
+1. Slack: [miragevirtual.slack.com](miragevirtual.slack.com) (sign up [here](miragevirtual.slack.com/signup). 
+2. [Google Drive](https://drive.google.com/drive/folders/1jfLRd1LUpXFvMFWj3mJqMv_H4NW2ADWq?usp=sharing) for documents.
+3. [Asana](https://app.asana.com/0/535441241418527/board?utm_source=asana_email&utm_medium=organic_email&utm_campaign=eng_invite_prod) for task management.
 4. [Read the Docs](https://readthedocs.org) for code documentation
+5. Facebook Messenger for inter-team communication
 
-### Team Theme Song
-[Stranger Things Theme Song](https://www.youtube.com/watch?v=-RcPZdihrp4) 
+# Team Theme Song
+[Stranger Things Title Sequence](https://www.youtube.com/watch?v=-RcPZdihrp4) 
