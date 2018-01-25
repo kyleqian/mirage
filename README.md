@@ -1,12 +1,15 @@
-# Oculus
+# Mirage
 
-# ![CS210](http://i.imgur.com/WdBU7U5.png) Startup your team
-You've been paired up with a corporate partner. Congratulations! Now it's time to start up your team and settle on a project to do.
+(insert logo here)
 
-### Team Name 
-Mirage 
+Mirage will be investigating innovations in the VR space, using an Oculus Rift to develop a solution to a current pain-point in VR today. 
 
-### Design a logo!
+# Team Members 
+| | Member | Photograph | Email |
+| --- | --- | --- | --- | --- | ---
+Christian Valadez | ![Christian](./teamImages/christianValadez.png) | cvaladez@stanford.edu | 
+
+# Team Skills Matrix
 
 ### Choose team theme music!
 Stranger Things Theme Song 
@@ -43,13 +46,14 @@ You can do this [directly in your README.md](https://github.com/adam-p/markdown-
 
 An example is below. You may want to use the 6 Hats Survey results and other data then what is shown in this example.
 
-| | Member | Skills | Personal Traits | Desired Growth | Weaknesses
-| --- | --- | --- | --- | --- | ---
+| Member | Skills | Personal Traits | Desired Growth | Weaknesses
+| --- | --- | --- | --- | ---
+Christian Valadez | Project Management, full-stack software development, user experience design | Creative, ambitious, entrepreneurial, pragmatic, fun | Management | Stubborn - only sometimes
 Jose | User testing, CAD, Statistical Data | Very sensitive to work environment | Programming | Programming
 Diego | Aesthetics and layout, building prototypes, AutoCAD | Disciplined | LaTeX, Planning Skills | Painting, Programming, Interpersonal communication
 Juan | AI, Machine Learning, Programming, GUI skills | Loves learning new programming languages | MatLAB | bad memory
 Andrew | Machine Learning, Audio recording, Signal processing, Statistical analysis | Strong opinions, very abstract thinker, Big PIcture guy | Rapid prototyping, project management | Sensitive to environments
-![Christian](./teamImages/christianValadez.png) | Christian Valadez | Project Management, full-stack software development, user experience design | Creative, ambitious, entrepreneurial, pragmatic, fun | Management | Hard-headed - sometimes
+
 
 
 ### Start benchmarking and need finding per today’s lecture
