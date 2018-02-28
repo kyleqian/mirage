@@ -1,1 +1,1 @@
-![Hello world!](./prototype/helloworld.gif)
+![Hello world!](./helloworld.gif)
