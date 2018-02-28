@@ -7,10 +7,10 @@ Mirage will be investigating innovations in the VR space, using the Oculus Rift 
 # Team Members 
 | Member | Photograph | Email |
 | --- | --- | --- |
-Christian Valadez | <img src="./teamImages/christianValadez.png" width="200" /> | cvaladez@stanford.edu |
-Kyle Qian | <img src="./teamImages/DSC_0742_HEAD.jpg" width="200" /> | kyleqian@stanford.edu |
-Nishtha Bhatia | <img src="./teamImages/NishthaBhatia.JPG" width="200" /> | nishthab@stanford.edu |
-Tariq Patanam | <img src="./teamImages/tariq.JPG" width="200" /> | tpatanam@stanford.edu |
+Christian Valadez | <img src="./assets/christianValadez.png" width="200" /> | cvaladez@stanford.edu |
+Kyle Qian | <img src="./assets/DSC_0742_HEAD.jpg" width="200" /> | kyleqian@stanford.edu |
+Nishtha Bhatia | <img src="./assets/NishthaBhatia.JPG" width="200" /> | nishthab@stanford.edu |
+Tariq Patanam | <img src="./assets/tariq.JPG" width="200" /> | tpatanam@stanford.edu |
 
 # Team Skills Matrix
 | Member | Skills | Personal Traits | Desired Growth | Weaknesses | Hat
@@ -21,11 +21,12 @@ Nishtha Bhatia | Full-stack software development, product management, human-comp
 Tariq Patanam | AI, full-stack dev, computer vision, some HCI, product management | Very analytical (philosophy minor) but also creative. Relaxed and chill | Needfinding; scaling + growing a project from nothing to driving user growth | Like Chris, stubborn also - uh oh; moving too cautiously/slowly | Blue hat 
 
 # Team Communication
-1. Slack: [miragevirtual.slack.com](miragevirtual.slack.com) (sign up [here](miragevirtual.slack.com/signup)). 
-2. [Google Drive](https://drive.google.com/drive/folders/1jfLRd1LUpXFvMFWj3mJqMv_H4NW2ADWq?usp=sharing) for documents.
-3. [Asana](https://app.asana.com/0/535441241418527/board?utm_source=asana_email&utm_medium=organic_email&utm_campaign=eng_invite_prod) for task management.
-4. [Read the Docs](https://readthedocs.org) for code documentation.
-5. Facebook Messenger for inter-team communication.
+1. Team blog: https://medium.com/miragestanford
+2. Slack: [miragevirtual.slack.com](miragevirtual.slack.com) (sign up [here](miragevirtual.slack.com/signup)). 
+3. [Google Drive](https://drive.google.com/drive/folders/1jfLRd1LUpXFvMFWj3mJqMv_H4NW2ADWq?usp=sharing) for documents.
+4. [Asana](https://app.asana.com/0/535441241418527/board?utm_source=asana_email&utm_medium=organic_email&utm_campaign=eng_invite_prod) for task management.
+5. [Read the Docs](https://readthedocs.org) for code documentation.
+6. Facebook Messenger for inter-team communication.
 
 # Team Theme Song
 [Stranger Things Title Sequence](https://www.youtube.com/watch?v=-RcPZdihrp4) 
