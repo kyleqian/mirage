@@ -32,6 +32,7 @@
         this.redo_trace = [];
         this.allowUndo = false;
         this.allowRedo = false;
+        this.currTimeout = null;
         cvs.addEventListener("mousedown", this.mouseDown.bind(this));
         cvs.addEventListener("mousemove", this.mouseMove.bind(this));
         cvs.addEventListener("mouseup", this.mouseUp.bind(this));
@@ -67,8 +68,12 @@
         this.options = options;
     };
 
-
     handwriting.Canvas.prototype.mouseDown = function(e) {
+        if (this.currTimeout) {
+            clearTimeout(this.currTimeout);
+            this.currTimeout = null;
+        }
+
         // new stroke
         this.cxt.lineWidth = this.lineWidth;
         this.handwritingX = [];
@@ -82,7 +87,6 @@
         this.handwritingX.push(x);
         this.handwritingY.push(y);
     };
-
 
     handwriting.Canvas.prototype.mouseMove = function(e) {
         if (this.drawing) {
@@ -106,27 +110,38 @@
         if (this.allowUndo) this.step.push(this.canvas.toDataURL());
 
         // TODO:
-        this.recognize();
-        this.erase();
+        this.currTimeout = setTimeout(function() {
+            this.recognize();
+            this.erase();
+        }, 250);
     };
-
 
     handwriting.Canvas.prototype.touchStart = function(e) {
         e.preventDefault();
-        this.cxt.lineWidth = this.lineWidth;
-        this.handwritingX = [];
-        this.handwritingY = [];
-        var de = document.documentElement;
-        var box = this.canvas.getBoundingClientRect();
-        var top = box.top + window.pageYOffset - de.clientTop;
-        var left = box.left + window.pageXOffset - de.clientLeft;
-        var touch = e.changedTouches[0];
-        touchX = touch.pageX - left;
-        touchY = touch.pageY - top;
-        this.handwritingX.push(touchX);
-        this.handwritingY.push(touchY);
-        this.cxt.beginPath();
-        this.cxt.moveTo(touchX, touchY);
+
+        if (this.currTimeout) {
+            clearTimeout(this.currTimeout);
+            this.currTimeout = null;
+        }
+
+        if (e.touches.length > 1) {
+            this.callback([' ', null]);
+        } else {
+            this.cxt.lineWidth = this.lineWidth;
+            this.handwritingX = [];
+            this.handwritingY = [];
+            var de = document.documentElement;
+            var box = this.canvas.getBoundingClientRect();
+            var top = box.top + window.pageYOffset - de.clientTop;
+            var left = box.left + window.pageXOffset - de.clientLeft;
+            var touch = e.changedTouches[0];
+            touchX = touch.pageX - left;
+            touchY = touch.pageY - top;
+            this.handwritingX.push(touchX);
+            this.handwritingY.push(touchY);
+            this.cxt.beginPath();
+            this.cxt.moveTo(touchX, touchY);
+        }
     };
 
     handwriting.Canvas.prototype.touchMove = function(e) {
@@ -153,8 +168,10 @@
         if (this.allowUndo) this.step.push(this.canvas.toDataURL());
 
         // TODO:
-        this.recognize();
-        this.erase();
+        this.currTimeout = setTimeout(function() {
+            this.recognize();
+            this.erase();
+        }, 250);
     };
 
     handwriting.Canvas.prototype.undo = function() {
@@ -249,11 +266,8 @@
                         callback(undefined, new Error("can't connect to recognition server"));
                         break;
                 }
-
-
             }
         });
-        // xhr.open("POST", "https://www.google.com.tw/inputtools/request?ime=handwriting&app=mobilesearch&cs=1&oe=UTF-8");
         xhr.open("POST", "https://www.google.com/inputtools/request?ime=handwriting&app=mobilesearch&cs=1&oe=UTF-8");
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
