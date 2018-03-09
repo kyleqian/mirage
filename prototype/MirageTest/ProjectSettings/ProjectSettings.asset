@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 14
-  productGUID: a7646415c946244558eb3d9d9f5d29ec
+  productGUID: 180ad86b5533249dbaee351cf7dbde88
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 4
@@ -204,6 +204,7 @@ PlayerSettings:
   tvOSSmallIconLayers: []
   tvOSSmallIconLayers2x: []
   tvOSLargeIconLayers: []
+  tvOSLargeIconLayers2x: []
   tvOSTopShelfImageLayers: []
   tvOSTopShelfImageLayers2x: []
   tvOSTopShelfImageWideLayers: []
@@ -456,7 +457,7 @@ PlayerSettings:
   ps4DownloadDataSize: 0
   ps4GarlicHeapSize: 2048
   ps4ProGarlicHeapSize: 2560
-  ps4Passcode: Q9wQj99nsQzldVI5ZuGXbEWRK5RhRXdC
+  ps4Passcode: zdNMK66MuCV6GXi5xr84P2R391UXaLHb
   ps4pnSessions: 1
   ps4pnPresence: 1
   ps4pnFriends: 1
@@ -502,7 +503,7 @@ PlayerSettings:
   psp2LiveAreaTrialPath: 
   psp2PatchChangeInfoPath: 
   psp2PatchOriginalPackage: 
-  psp2PackagePassword: dG5nG5azdNMK66MuCV6GXi5xr84P2R39
+  psp2PackagePassword: avJvFZGfO47XWS2qVOw5lxuBEBNue7b9
   psp2KeystoneFile: 
   psp2MemoryExpansionMode: 0
   psp2DRMType: 0
@@ -632,9 +633,9 @@ PlayerSettings:
   cloudServicesEnabled: {}
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 23d537ec-7215-4411-9a0c-13d122b516f7
+  cloudProjectId: 97570c7c-7ee8-4623-b017-6dc61be12d6e
   projectName: MirageTest
-  organizationId: nishthab
+  organizationId: avatarmage34
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
