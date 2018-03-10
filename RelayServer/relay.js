@@ -1,17 +1,3 @@
-// const express = require('express');
-// const app = express();
-
-// app.get('/', function(req, res)) {
-// 	res.send('Hello world!');
-// }
-
-// app.get('/:char', function(req, res) {
-// 	process.stdout.write(req.params.char);
-// 	res.send('Received: ' + req.params.char);
-// });
-
-// app.listen(process.env.PORT);
-
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
@@ -29,9 +15,29 @@ wss.on('connection', ws => {
     //connection is up, let's add a simple event
     ws.on('message', message => {
 
+        // //log the received message and send it back to the client
+        // console.log('received: %s', message);
+        // ws.send(`Hello, you sent -> ${message}`);
+        
         //log the received message and send it back to the client
         console.log('received: %s', message);
-        ws.send(`Hello, you sent -> ${message}`);
+
+        const broadcastRegex = /^broadcast\:/;
+
+        if (broadcastRegex.test(message)) {
+            message = message.replace(broadcastRegex, '');
+
+            //send back the message to the other clients
+            wss.clients
+                .forEach(client => {
+                    if (client != ws) {
+                        client.send(`Hello, broadcast message -> ${message}`);
+                    }    
+                });
+            
+        } else {
+            ws.send(`Hello, you sent -> ${message}`);
+        }
     });
 
     //send immediatly a feedback to the incoming connection    
