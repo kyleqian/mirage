@@ -12,9 +12,9 @@
 
 // app.listen(process.env.PORT);
 
-import * as express from 'express';
-import * as http from 'http';
-import * as WebSocket from 'ws';
+const express = require('express');
+const http = require('http');
+const WebSocket = require('ws');
 
 const app = express();
 
@@ -36,6 +36,10 @@ wss.on('connection', ws => {
 
     //send immediatly a feedback to the incoming connection    
     ws.send('Hi there, I am a WebSocket server');
+});
+
+app.get('/', function(req, res) {
+	res.send('Hello world!');
 });
 
 //start our server
