@@ -64,7 +64,7 @@
         if (typeof localIp !== "undefined")
             xhr.open("GET", "http://" + localIp + ":9001/" + char);
         else
-            xhr.open("GET", "http://" + "10.1.10.190" + ":9001/" + char);
+            xhr.open("GET", "http://" + "10.34.164.54" + ":9001/" + char);
         xhr.send();
     }
 

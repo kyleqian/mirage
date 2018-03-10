@@ -15,10 +15,6 @@ wss.on('connection', ws => {
     //connection is up, let's add a simple event
     ws.on('message', message => {
 
-        // //log the received message and send it back to the client
-        // console.log('received: %s', message);
-        // ws.send(`Hello, you sent -> ${message}`);
-        
         //log the received message and send it back to the client
         console.log('received: %s', message);
 
