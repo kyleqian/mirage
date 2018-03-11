@@ -1,6 +1,6 @@
 # Mirage
 
-<img src="./assets/logo@2x.png" width="200">
+<img src="./home/logo@2x.png" width="200">
 
 Mirage will be investigating innovations in the VR space, using the Oculus Rift to develop a solution to a current pain-point in VR today. 
 
