@@ -1,16 +1,16 @@
 # Mirage
 
-<img src="./home/logo@2x.png" width="200">
+<img src="./documents/photos/logo@2x.png" width="200">
 
 Mirage will be investigating innovations in the VR space, using the Oculus Rift to develop a solution to a current pain-point in VR today. 
 
 # Team Members 
 | Member | Photograph | Email |
 | --- | --- | --- |
-Christian Valadez | <img src="./home/christianValadez.png" width="200" /> | cvaladez@stanford.edu |
-Kyle Qian | <img src="./home/DSC_0742_HEAD.jpg" width="200" /> | kyleqian@stanford.edu |
-Nishtha Bhatia | <img src="./home/NishthaBhatia.JPG" width="200" /> | nishthab@stanford.edu |
-Tariq Patanam | <img src="./home/tariq.JPG" width="200" /> | tpatanam@stanford.edu |
+Christian Valadez | <img src="./documents/photos/christianValadez.png" width="200" /> | cvaladez@stanford.edu |
+Kyle Qian | <img src="./documents/photos/DSC_0742_HEAD.jpg" width="200" /> | kyleqian@stanford.edu |
+Nishtha Bhatia | <img src="./documents/photos/NishthaBhatia.JPG" width="200" /> | nishthab@stanford.edu |
+Tariq Patanam | <img src="./documents/photos/tariq.JPG" width="200" /> | tpatanam@stanford.edu |
 
 # Team Skills Matrix
 | Member | Skills | Personal Traits | Desired Growth | Weaknesses | Hat
