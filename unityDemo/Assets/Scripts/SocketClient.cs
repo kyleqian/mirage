@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.Networking;
+using System.Collections;
 
 public class SocketClient : MonoBehaviour {
 //	public class TextReceivedEvent : UnityEvent<string> {
@@ -26,7 +28,7 @@ public class SocketClient : MonoBehaviour {
 	void Start () {
 		Connect ();
 	}
-	
+		
 	void Update () {
 	}
 
