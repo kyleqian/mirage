@@ -4,17 +4,20 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class SocketClient : MonoBehaviour {
-	public class TextReceivedEvent : UnityEvent<string> {
-	}
+//	public class TextReceivedEvent : UnityEvent<string> {
+//	}
 
 	public static SocketClient Instance;
 
 	ClientWebSocket webSocket;
 	const int receiveChunkSize = 256;
 
-	public TextReceivedEvent OnTextReceived = new TextReceivedEvent();
+//	public TextReceivedEvent OnTextReceived = new TextReceivedEvent();
+
+	public Text text;
 
 	void Awake() {
 		Instance = this;
@@ -39,7 +42,8 @@ public class SocketClient : MonoBehaviour {
 			}
 			else
 			{
-				OnTextReceived.Invoke (System.Text.Encoding.UTF8.GetString(buffer));
+				text.text = System.Text.Encoding.UTF8.GetString (buffer);
+//				OnTextReceived.Invoke (System.Text.Encoding.UTF8.GetString(buffer));
 //				Debug.Log(System.Text.Encoding.UTF8.GetString(buffer));
 			}
 		}
