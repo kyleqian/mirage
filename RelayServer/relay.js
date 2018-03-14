@@ -28,7 +28,8 @@ wss.on('connection', ws => {
                 .forEach(client => {
                     if (client != ws) {
                         client.send(`${message}`);
-                    }    
+                        console.log('sent: %s', message);
+                    }
                 });
             
         } else {
