@@ -36,7 +36,7 @@ public class SocketClient : MonoBehaviour {
 		byte[] buffer = new byte[receiveChunkSize];
 
 		while (webSocket.State == WebSocketState.Open) {
-			var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+			WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
 
 			if (result.MessageType == WebSocketMessageType.Close)
 			{
@@ -44,7 +44,10 @@ public class SocketClient : MonoBehaviour {
 			}
 			else
 			{
-				text.text = System.Text.Encoding.UTF8.GetString (buffer);
+				print (result.Count);
+				byte[] receivedBytes = new byte[result.Count];
+				Array.Copy(buffer, 0, receivedBytes, 0, result.Count);
+				text.text = System.Text.Encoding.UTF8.GetString (receivedBytes);
 //				OnTextReceived.Invoke (System.Text.Encoding.UTF8.GetString(buffer));
 //				Debug.Log(System.Text.Encoding.UTF8.GetString(buffer));
 			}
