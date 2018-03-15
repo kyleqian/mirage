@@ -29,6 +29,7 @@ public class CleverbotConnection : MonoBehaviour {
 		// Set current user text to new text
 		currentUserText = SocketClient.Instance.getTotalText ();
 		if (SocketClient.Instance.getShouldSendText()) {
+
 			// Reset cleverbot
 			SocketClient.Instance.returnToEmptyState ();
 
@@ -40,8 +41,11 @@ public class CleverbotConnection : MonoBehaviour {
 	///////////// Helper Methods //////////////
 	IEnumerator GetReply(string input)
 	{
+        print("Sending text: " + input);
 		UnityWebRequest request = UnityWebRequest.Get ("https://www.cleverbot.com/getreply?key=CC80ebgCf3oLzog7UyH8xwLslXQ&input="+input);
 		yield return request.SendWebRequest ();
+
+        print("Got reply");
 
 		if(request.isNetworkError || request.isHttpError) {
 			print(request.error);
@@ -49,6 +53,7 @@ public class CleverbotConnection : MonoBehaviour {
 		else {
 			//deserialize, extract output, set text equal to output
 			replyText.text = getCleverbotReply(request.downloadHandler.text);
+            print(replyText.text);
 		}
 	}
 
