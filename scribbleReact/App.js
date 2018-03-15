@@ -93,16 +93,26 @@ export default class App extends React.Component {
           //Clear the state for the next letter
           this.setState({xCoords: [], yCoords: [], recognized: foundText})
           console.log(js[1][0][1])
-          console.log("opening socket")       
+          console.log("opening socket")  
+          const firstLetter = js[1][0][1][0]      
           ws.onopen = () => {
             // connection opened
             console.log("sending a message")
-            const message = "broadcast: " + js[1][0][1][0]
-            console.log(message)
-            ws.send(message) // send a message
+            const message = "broadcast: " + firstLetter
+            
+            if (firstLetter === '..' || firstLetter === ':'){
+              console.log('DOUBLE_TAP')
+              ws.send('broadcast: SPACE')
+            }
+            else if (firstLetter === '...'){
+              console.log('TRIPLE_TAP')
+              ws.send('broadcast: END')
+            }
+            else{
+              ws.send(message) // send a message
+            }
           }; 
           ws.onopen()
-          console.log("socket was opened")
           this._clear()
         })
         .catch((error) => {
