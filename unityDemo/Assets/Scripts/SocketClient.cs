@@ -4,23 +4,22 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Collections;
 
 public class SocketClient : MonoBehaviour {
-//	public class TextReceivedEvent : UnityEvent<string> {
-//	}
 
 	public static SocketClient Instance;
+	private ClientWebSocket webSocket;
 
-	ClientWebSocket webSocket;
-	const int receiveChunkSize = 256;
+	private const int receiveChunkSize = 256;
 
-//	public TextReceivedEvent OnTextReceived = new TextReceivedEvent();
+	// End indication variables
+	private const string SEND_TRIGGER = "END";
+	private string totalText = "";
+	private bool shouldSendText;
 
-	public Text text;
-
+	///////////// Starter Methods /////////////
 	void Awake() {
 		Instance = this;
 	}
@@ -44,11 +43,22 @@ public class SocketClient : MonoBehaviour {
 			}
 			else
 			{
-				print (result.Count);
 				byte[] receivedBytes = new byte[result.Count];
 				Array.Copy(buffer, 0, receivedBytes, 0, result.Count);
-				text.text = System.Text.Encoding.UTF8.GetString (receivedBytes);
+
+				string receivedText = System.Text.Encoding.UTF8.GetString (receivedBytes);
+				if (receivedText.Contains(SEND_TRIGGER)) {
+					// Inform subscriber that text is ready to process
+					shouldSendText = true;
+				} else {
+					print ("Received text " + receivedText);
+					print ("Total text before append " + totalText);
+					totalText += receivedText;
+					print ("Total text after append " + totalText);
+				}
+
 //				OnTextReceived.Invoke (System.Text.Encoding.UTF8.GetString(buffer));
+
 //				Debug.Log(System.Text.Encoding.UTF8.GetString(buffer));
 			}
 		}
@@ -74,5 +84,27 @@ public class SocketClient : MonoBehaviour {
 
 			// Console.WriteLine();
 		}
+	}
+
+	///////////////////// Getter and Setter Methods ///////////////////
+	public string getTotalText() {
+		return totalText;
+	}
+
+	private void clearTotalText() {
+		totalText = "";
+	}
+
+	public bool getShouldSendText() {
+		return shouldSendText;
+	}
+
+	private void offShouldSendText() {
+		shouldSendText = false;
+	}
+
+	public void returnToEmptyState() {
+		clearTotalText ();
+		offShouldSendText ();
 	}
 }
