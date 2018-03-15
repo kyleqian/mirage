@@ -35,7 +35,7 @@ public class SocketClient : MonoBehaviour {
 		byte[] buffer = new byte[receiveChunkSize];
 
 		while (webSocket.State == WebSocketState.Open) {
-			var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+			WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
 
 			if (result.MessageType == WebSocketMessageType.Close)
 			{
@@ -43,8 +43,11 @@ public class SocketClient : MonoBehaviour {
 			}
 			else
 			{
-				string receivedText = System.Text.Encoding.UTF8.GetString (buffer);
-				if (receivedText == SEND_TRIGGER) {
+				byte[] receivedBytes = new byte[result.Count];
+				Array.Copy(buffer, 0, receivedBytes, 0, result.Count);
+
+				string receivedText = System.Text.Encoding.UTF8.GetString (receivedBytes);
+				if (receivedText.Contains(SEND_TRIGGER)) {
 					// Inform subscriber that text is ready to process
 					shouldSendText = true;
 				} else {
@@ -53,6 +56,9 @@ public class SocketClient : MonoBehaviour {
 					totalText += receivedText;
 					print ("Total text after append " + totalText);
 				}
+
+//				OnTextReceived.Invoke (System.Text.Encoding.UTF8.GetString(buffer));
+
 //				Debug.Log(System.Text.Encoding.UTF8.GetString(buffer));
 			}
 		}

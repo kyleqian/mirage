@@ -29,6 +29,9 @@ public class CleverbotConnection : MonoBehaviour {
 		// Set current user text to new text
 		currentUserText = SocketClient.Instance.getTotalText ();
 		if (SocketClient.Instance.getShouldSendText()) {
+			// Reset cleverbot
+			SocketClient.Instance.returnToEmptyState ();
+
 			// Request a reply from Cleverbot
 			StartCoroutine(GetReply(currentUserText));
 		}
@@ -47,9 +50,6 @@ public class CleverbotConnection : MonoBehaviour {
 			//deserialize, extract output, set text equal to output
 			replyText.text = getCleverbotReply(request.downloadHandler.text);
 		}
-
-		// Reset cleverbot
-		SocketClient.Instance.returnToEmptyState ();
 	}
 
 	private string getCleverbotReply(string fullJson)
