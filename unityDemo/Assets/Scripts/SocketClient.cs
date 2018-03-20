@@ -3,9 +3,6 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Networking;
-using System.Collections;
 
 public class SocketClient : MonoBehaviour {
 
