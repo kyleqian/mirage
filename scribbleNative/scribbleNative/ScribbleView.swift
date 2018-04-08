@@ -15,6 +15,15 @@ class ScribbleView: UIView {
     var strokeColor: CGColor = UIColor.black.cgColor
     var strokes = [Stroke]()
     
+    // For timer:
+//    DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // change 2 to desired number of seconds
+//    // Your code with delay
+//    }
+    
+    //Or:
+    //Number of seconds.
+    var timer: Timer? = nil;
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard !isDrawing else { return }
         isDrawing = true
@@ -44,6 +53,11 @@ class ScribbleView: UIView {
         lastPoint = nil
         print(currentPoint)
         setNeedsDisplay()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) { (timer) in
+            //Do stuff 15ms later
+            self.erase()
+        }
     }
     
     override func draw(_ rect: CGRect) {
