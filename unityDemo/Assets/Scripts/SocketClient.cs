@@ -3,9 +3,6 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Networking;
-using System.Collections;
 
 public class SocketClient : MonoBehaviour {
 
@@ -16,7 +13,8 @@ public class SocketClient : MonoBehaviour {
 
 	// End indication variables
 	private const string SEND_TRIGGER = "END";
-	private string totalText = "";
+	private const string SPACE_BAR = "SPACE";
+    private string totalText = "";
 	private bool shouldSendText;
 
 	///////////// Starter Methods /////////////
@@ -50,11 +48,12 @@ public class SocketClient : MonoBehaviour {
 				if (receivedText.Contains(SEND_TRIGGER)) {
 					// Inform subscriber that text is ready to process
 					shouldSendText = true;
-				} else {
+				} else if (receivedText.Contains(SPACE_BAR)) {
+                    print("Received SPACE_BAR");
+                    totalText += " ";
+                } else {
 					print ("Received text " + receivedText);
-					print ("Total text before append " + totalText);
 					totalText += receivedText;
-					print ("Total text after append " + totalText);
 				}
 
 //				OnTextReceived.Invoke (System.Text.Encoding.UTF8.GetString(buffer));
