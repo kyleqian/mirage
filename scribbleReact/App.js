@@ -76,6 +76,8 @@ export default class App extends React.Component {
           "language": "en"
       }]
     })
+    // Invert the strokes as well 
+    
     let foundText = ''
     fetch("https://www.google.com/inputtools/request?ime=handwriting&app=mobilesearch&cs=1&oe=UTF-8", {
       method: 'POST',
