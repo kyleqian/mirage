@@ -48,7 +48,7 @@ class ScribbleView: UIView {
     
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-        context?.setLineWidth(10)
+        context?.setLineWidth(4)
         context?.setLineCap(.round)
         for stroke in strokes {
             context?.beginPath()
