@@ -31,6 +31,8 @@ class ScribbleView: UIView {
         let currentPoint = touch.location(in: self)
         lastPoint = currentPoint
         print(currentPoint)
+        
+        timer?.invalidate()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -54,7 +56,7 @@ class ScribbleView: UIView {
         print(currentPoint)
         setNeedsDisplay()
         
-        timer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) { (timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { (timer) in
             //Do stuff 15ms later
             self.erase()
         }
