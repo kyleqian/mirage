@@ -14,6 +14,8 @@
 		AA9D1EF0207A9DEF005AA382 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA9D1EEE207A9DEF005AA382 /* LaunchScreen.storyboard */; };
 		AA9D1EFB207A9DF0005AA382 /* scribbleNativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D1EFA207A9DF0005AA382 /* scribbleNativeTests.swift */; };
 		AA9D1F06207A9DF0005AA382 /* scribbleNativeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D1F05207A9DF0005AA382 /* scribbleNativeUITests.swift */; };
+		AAEF40BB207AAEB000E0C644 /* ScribbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF40BA207AAEB000E0C644 /* ScribbleView.swift */; };
+		AAEF40BF207AAF7C00E0C644 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF40BE207AAF7C00E0C644 /* Stroke.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		AA9D1F01207A9DF0005AA382 /* scribbleNativeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = scribbleNativeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9D1F05207A9DF0005AA382 /* scribbleNativeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scribbleNativeUITests.swift; sourceTree = "<group>"; };
 		AA9D1F07207A9DF0005AA382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAEF40BA207AAEB000E0C644 /* ScribbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScribbleView.swift; sourceTree = "<group>"; };
+		AAEF40BE207AAF7C00E0C644 /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			children = (
 				AA9D1EE5207A9DEE005AA382 /* AppDelegate.swift */,
 				AA9D1EE7207A9DEE005AA382 /* ViewController.swift */,
+				AAEF40BE207AAF7C00E0C644 /* Stroke.swift */,
+				AAEF40BA207AAEB000E0C644 /* ScribbleView.swift */,
 				AA9D1EE9207A9DEE005AA382 /* Main.storyboard */,
 				AA9D1EEC207A9DEF005AA382 /* Assets.xcassets */,
 				AA9D1EEE207A9DEF005AA382 /* LaunchScreen.storyboard */,
@@ -258,6 +264,8 @@
 			files = (
 				AA9D1EE8207A9DEE005AA382 /* ViewController.swift in Sources */,
 				AA9D1EE6207A9DEE005AA382 /* AppDelegate.swift in Sources */,
+				AAEF40BB207AAEB000E0C644 /* ScribbleView.swift in Sources */,
+				AAEF40BF207AAF7C00E0C644 /* Stroke.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
