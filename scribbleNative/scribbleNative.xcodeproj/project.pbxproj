@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27CBD59D208ABC5D000B3F01 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CBD59C208ABC5C000B3F01 /* CoreMotion.framework */; };
 		AA9D1EE6207A9DEE005AA382 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D1EE5207A9DEE005AA382 /* AppDelegate.swift */; };
 		AA9D1EE8207A9DEE005AA382 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D1EE7207A9DEE005AA382 /* ViewController.swift */; };
 		AA9D1EEB207A9DEE005AA382 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA9D1EE9207A9DEE005AA382 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 		AA9D1F06207A9DF0005AA382 /* scribbleNativeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D1F05207A9DF0005AA382 /* scribbleNativeUITests.swift */; };
 		AAEF40BB207AAEB000E0C644 /* ScribbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF40BA207AAEB000E0C644 /* ScribbleView.swift */; };
 		AAEF40BF207AAF7C00E0C644 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF40BE207AAF7C00E0C644 /* Stroke.swift */; };
+		FD15185B719177748290C375 /* Pods_scribbleNative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC13FD7BFB5BCB35C03DF65 /* Pods_scribbleNative.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27CBD59C208ABC5C000B3F01 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		8BC13FD7BFB5BCB35C03DF65 /* Pods_scribbleNative.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_scribbleNative.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9D1EE2207A9DEE005AA382 /* scribbleNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scribbleNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9D1EE5207A9DEE005AA382 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA9D1EE7207A9DEE005AA382 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		AA9D1F07207A9DF0005AA382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAEF40BA207AAEB000E0C644 /* ScribbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScribbleView.swift; sourceTree = "<group>"; };
 		AAEF40BE207AAF7C00E0C644 /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
+		D467144F9A1528ABD285C488 /* Pods-scribbleNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scribbleNative.debug.xcconfig"; path = "Pods/Target Support Files/Pods-scribbleNative/Pods-scribbleNative.debug.xcconfig"; sourceTree = "<group>"; };
+		D517498672E4CC53D7E10770 /* Pods-scribbleNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scribbleNative.release.xcconfig"; path = "Pods/Target Support Files/Pods-scribbleNative/Pods-scribbleNative.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27CBD59D208ABC5D000B3F01 /* CoreMotion.framework in Frameworks */,
+				FD15185B719177748290C375 /* Pods_scribbleNative.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +86,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39CA9450B30CF21650F590FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27CBD59C208ABC5C000B3F01 /* CoreMotion.framework */,
+				8BC13FD7BFB5BCB35C03DF65 /* Pods_scribbleNative.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8100D3B9D64649FC2322CABA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D467144F9A1528ABD285C488 /* Pods-scribbleNative.debug.xcconfig */,
+				D517498672E4CC53D7E10770 /* Pods-scribbleNative.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AA9D1ED9207A9DEE005AA382 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +111,8 @@
 				AA9D1EF9207A9DF0005AA382 /* scribbleNativeTests */,
 				AA9D1F04207A9DF0005AA382 /* scribbleNativeUITests */,
 				AA9D1EE3207A9DEE005AA382 /* Products */,
+				8100D3B9D64649FC2322CABA /* Pods */,
+				39CA9450B30CF21650F590FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,9 +166,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA9D1F0A207A9DF0005AA382 /* Build configuration list for PBXNativeTarget "scribbleNative" */;
 			buildPhases = (
+				BE02C30ADA99C0F9CF3655F3 /* [CP] Check Pods Manifest.lock */,
 				AA9D1EDE207A9DEE005AA382 /* Sources */,
 				AA9D1EDF207A9DEE005AA382 /* Frameworks */,
 				AA9D1EE0207A9DEE005AA382 /* Resources */,
+				1CAD2A2B9753169DA76D320E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -256,6 +286,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1CAD2A2B9753169DA76D320E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-scribbleNative/Pods-scribbleNative-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-scribbleNative/Pods-scribbleNative-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE02C30ADA99C0F9CF3655F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-scribbleNative-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AA9D1EDE207A9DEE005AA382 /* Sources */ = {
@@ -436,9 +505,11 @@
 		};
 		AA9D1F0B207A9DF0005AA382 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D467144F9A1528ABD285C488 /* Pods-scribbleNative.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7WSG8CR6J3;
 				INFOPLIST_FILE = scribbleNative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -453,9 +524,11 @@
 		};
 		AA9D1F0C207A9DF0005AA382 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D517498672E4CC53D7E10770 /* Pods-scribbleNative.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7WSG8CR6J3;
 				INFOPLIST_FILE = scribbleNative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
