@@ -59,6 +59,8 @@ class ScribbleView: UIView {
         timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { (timer) in
             //Do stuff 15ms later
             self.erase()
+            
+            RecognitionAPI.sharedInstance.sendTrace(trace: [1,2,3])
         }
     }
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27CBD59D208ABC5D000B3F01 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CBD59C208ABC5C000B3F01 /* CoreMotion.framework */; };
+		52BA0674208ACB1000414912 /* RecognitionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BA0673208ACB1000414912 /* RecognitionAPI.swift */; };
 		AA9D1EE6207A9DEE005AA382 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D1EE5207A9DEE005AA382 /* AppDelegate.swift */; };
 		AA9D1EE8207A9DEE005AA382 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D1EE7207A9DEE005AA382 /* ViewController.swift */; };
 		AA9D1EEB207A9DEE005AA382 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA9D1EE9207A9DEE005AA382 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		27CBD59C208ABC5C000B3F01 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		52BA0673208ACB1000414912 /* RecognitionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionAPI.swift; sourceTree = "<group>"; };
 		8BC13FD7BFB5BCB35C03DF65 /* Pods_scribbleNative.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_scribbleNative.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9D1EE2207A9DEE005AA382 /* scribbleNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scribbleNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9D1EE5207A9DEE005AA382 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				AA9D1EEC207A9DEF005AA382 /* Assets.xcassets */,
 				AA9D1EEE207A9DEF005AA382 /* LaunchScreen.storyboard */,
 				AA9D1EF1207A9DEF005AA382 /* Info.plist */,
+				52BA0673208ACB1000414912 /* RecognitionAPI.swift */,
 			);
 			path = scribbleNative;
 			sourceTree = "<group>";
@@ -295,11 +298,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-scribbleNative/Pods-scribbleNative-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -331,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52BA0674208ACB1000414912 /* RecognitionAPI.swift in Sources */,
 				AA9D1EE8207A9DEE005AA382 /* ViewController.swift in Sources */,
 				AA9D1EE6207A9DEE005AA382 /* AppDelegate.swift in Sources */,
 				AAEF40BB207AAEB000E0C644 /* ScribbleView.swift in Sources */,
