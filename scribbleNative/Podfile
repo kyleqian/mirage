@@ -4,6 +4,7 @@ use_frameworks!
 
 target 'scribbleNative' do
 	pod 'Starscream', '~> 3.0.5'
-    pod 'Alamofire', '~> 4.7'
-    pod 'SwiftyJSON', '~> 4.0'
+	pod 'JPSVolumeButtonHandler'
+    	pod 'Alamofire', '~> 4.7'
+    	pod 'SwiftyJSON', '~> 4.0'
 end
