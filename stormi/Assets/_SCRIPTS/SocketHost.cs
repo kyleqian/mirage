@@ -2,7 +2,7 @@
 using WebSocketSharp;
 using WebSocketSharp.Server;
 
-public class Rotation : WebSocketBehavior
+public class M_Rotation : WebSocketBehavior
 {
 	protected override void OnMessage(MessageEventArgs e)
 	{
@@ -12,6 +12,14 @@ public class Rotation : WebSocketBehavior
         SocketHost.instance.yaw = float.Parse(rotationData[1]);
         SocketHost.instance.roll = float.Parse(rotationData[2]);
 	}
+}
+
+public class M_Input : WebSocketBehavior
+{
+    protected override void OnMessage(MessageEventArgs e)
+    {
+        Debug.Log(e.Data);
+    }
 }
 
 public class SocketHost : MonoBehaviour
@@ -30,7 +38,8 @@ public class SocketHost : MonoBehaviour
 	void Start()
     {
         wssv = new WebSocketServer(9001);
-        wssv.AddWebSocketService<Rotation>("/Rotation");
+        wssv.AddWebSocketService<M_Rotation>("/M_Rotation");
+        wssv.AddWebSocketService<M_Input>("/M_Input");
         wssv.Start();
     }
 }

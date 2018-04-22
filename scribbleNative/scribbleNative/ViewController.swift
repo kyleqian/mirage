@@ -9,21 +9,36 @@
 import UIKit
 import CoreMotion
 import Starscream
+import JPSVolumeButtonHandler
 
 class ViewController: UIViewController {
     
     var motionManager = CMMotionManager()
-    var socket = WebSocket(url: URL(string: "ws://10.0.1.134:9001/Rotation")!)
+    var volumeButtonHandler: JPSVolumeButtonHandler?
+    var rotationSocket = WebSocket(url: URL(string: "ws://10.1.10.190:9001/M_Rotation")!)
+    var inputSocket = WebSocket(url: URL(string: "ws://10.1.10.190:9001/M_Input")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        socket.connect()
+        rotationSocket.connect()
+        inputSocket.connect()
         
         motionManager.startDeviceMotionUpdates(to: OperationQueue.current!, withHandler: {
             (deviceMotion: CMDeviceMotion?, error: Error?) -> Void in
-            self.socket.write(string: "\(deviceMotion!.attitude.pitch);\(deviceMotion!.attitude.yaw);\(deviceMotion!.attitude.roll)")
+            self.rotationSocket.write(string: "\(deviceMotion!.attitude.pitch);\(deviceMotion!.attitude.yaw);\(deviceMotion!.attitude.roll)")
         })
+        
+        let upBlock = { () -> Void in
+            self.inputSocket.write(string: "UP_PRESS")
+        }
+        
+        let downBlock = { () -> Void in
+            self.inputSocket.write(string: "DOWN_PRESS")
+        }
+        
+        volumeButtonHandler = JPSVolumeButtonHandler(up: upBlock, downBlock: downBlock)
+        volumeButtonHandler?.start(true)
     }
     
     override func didReceiveMemoryWarning() {
