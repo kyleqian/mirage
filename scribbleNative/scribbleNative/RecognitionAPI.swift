@@ -13,7 +13,7 @@ import SwiftyJSON
 class RecognitionAPI {
     
     var onTraceRecognized : ((String) -> ())?
-    let googleAPIEndpoint : String = "https://www.google.com.tw/inputtools/request?ime=handwriting&app=mobilesearch&cs=1&oe=UTF-8"
+    let googleAPIEndpoint : String = "https://www.google.com/inputtools/request?ime=handwriting&app=mobilesearch&cs=1&oe=UTF-8"
     
     func getTraceValue (trace : [[[Float]]]) {
         

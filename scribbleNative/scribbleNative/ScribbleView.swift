@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class ScribbleView: UIView {
+    weak var delegate: NetworkDelegate?
+    
     var isDrawing = false
     var lastPoint: CGPoint!
     var strokeColor: CGColor = UIColor.black.cgColor
@@ -71,7 +73,7 @@ class ScribbleView: UIView {
         addToCurPath(point: currentPoint)
         addCurPathToTrace()
         
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { (timer) in
             //Do stuff 15ms later
             self.erase()
             
@@ -79,7 +81,8 @@ class ScribbleView: UIView {
             self.resetTrace()
             
             self.recognitionAPI.onTraceRecognized = { text in
-                print("I got the text \(text)")
+//                print("I got the text \(text)")
+                self.delegate?.sendText(text: text)
             }
         }
     }

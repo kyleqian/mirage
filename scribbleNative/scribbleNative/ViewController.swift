@@ -11,7 +11,8 @@ import CoreMotion
 import Starscream
 import JPSVolumeButtonHandler
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, NetworkDelegate {
+    @IBOutlet var scribbleView: ScribbleView!
     
     var motionManager = CMMotionManager()
     var volumeButtonHandler: JPSVolumeButtonHandler?
@@ -20,6 +21,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scribbleView.delegate = self
         
         rotationSocket.connect()
         inputSocket.connect()
@@ -44,5 +46,9 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func sendText(text: String) {
+        self.inputSocket.write(string: text)
     }
 }
