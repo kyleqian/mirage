@@ -14,6 +14,7 @@ class ScribbleView: UIView {
     var lastPoint: CGPoint!
     var strokeColor: CGColor = UIColor.black.cgColor
     var strokes = [Stroke]()
+    var recognitionAPI = RecognitionAPI()
     
     // For timer:
 //    DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // change 2 to desired number of seconds
@@ -60,7 +61,18 @@ class ScribbleView: UIView {
             //Do stuff 15ms later
             self.erase()
             
-            RecognitionAPI.sharedInstance.sendTrace(trace: [1,2,3])
+            let trace = [   //the trace is an array of strokes
+                [   //a stroke is an array of pairs of captured (x, y) coordinates
+                    [300, 310, 320, 330, 340], //x coordinate
+                    [320, 320, 320, 320, 320]  //y coordinate
+                    //each pair of (x, y) coordinates represents one sampling point
+                ]
+            ]
+            
+            self.recognitionAPI.getTraceValue(trace: trace)
+            self.recognitionAPI.onTraceRecognized = { text in
+                print("I got the text \(text)")
+            }
         }
     }
     

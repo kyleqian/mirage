@@ -12,16 +12,10 @@ import SwiftyJSON
 
 class RecognitionAPI {
     
-    static let sharedInstance = RecognitionAPI()
+    var onTraceRecognized : (([String]) -> ())?
+    let googleAPIEndpoint : String = "https://www.google.com.tw/inputtools/request?ime=handwriting&app=mobilesearch&cs=1&oe=UTF-8"
     
-    func sendTrace (trace : NSArray) {
-        let trace = [   //the trace is an array of strokes
-            [   //a stroke is an array of pairs of captured (x, y) coordinates
-                [300, 310, 320, 330, 340], //x coordinate
-                [320, 320, 320, 320, 320]  //y coordinate
-                //each pair of (x, y) coordinates represents one sampling point
-        ]
-        ]
+    func getTraceValue (trace : [[[Int]]]) {
         
         let parameters : Parameters = [
             "options": "enable_pre_space",
@@ -31,19 +25,17 @@ class RecognitionAPI {
                     "writing_area_height": 800
                 ],
                 "ink": trace,
-                "language": "zh_TW"
+                "language": "en"
                 ]]
         ]
         
-        Alamofire.request("https://www.google.com.tw/inputtools/request?ime=handwriting&app=mobilesearch&cs=1&oe=UTF-8", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
-            let data = response.request?.httpBody
-//            print("request body : \(String(data: data!, encoding: String.Encoding.utf8) as String!)")
-//            print("Request: \(String(describing: response.request))")   // original url request
-//            print("Response: \(String(describing: response.response))") // http url response
-//            print("Result: \(response.result.value)")                         // response serialization result
-            
-            if let json = response.result.value {
-                print("JSON: \(json)") // serialized json response
+        Alamofire.request(googleAPIEndpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
+
+            // Get the body of JSON response
+            if let data = response.data {
+                let jsonResponse = JSON.init(parseJSON: String(data: data, encoding: .utf8)!)
+                
+                self.onTraceRecognized?(jsonResponse[1][0][1].arrayObject as! [String])
             }
         }
     }
