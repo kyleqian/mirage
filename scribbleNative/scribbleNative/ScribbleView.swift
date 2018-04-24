@@ -16,6 +16,10 @@ class ScribbleView: UIView {
     var strokes = [Stroke]()
     var recognitionAPI = RecognitionAPI()
     
+    // This is for now to send to the recognitionAPI. Should be integrated with strokes
+    var trace : [[[Float]]] = []
+    var curPath = Path()
+    
     // For timer:
 //    DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // change 2 to desired number of seconds
 //    // Your code with delay
@@ -28,10 +32,15 @@ class ScribbleView: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard !isDrawing else { return }
         isDrawing = true
+
+        // Hmm, why are both this and the prev check necessary?
         guard let touch = touches.first else { return }
+        
         let currentPoint = touch.location(in: self)
         lastPoint = currentPoint
-        print(currentPoint)
+        
+        curPath = Path()
+        addToCurPath(point: currentPoint)
         
         timer?.invalidate()
     }
@@ -42,6 +51,9 @@ class ScribbleView: UIView {
         let currentPoint = touch.location(in: self)
         let stroke = Stroke(startPoint: lastPoint, endPoint: currentPoint, color: strokeColor)
         strokes.append(stroke)
+        
+        addToCurPath(point: currentPoint)
+        
         lastPoint = currentPoint
         setNeedsDisplay()
     }
@@ -54,22 +66,26 @@ class ScribbleView: UIView {
         let stroke = Stroke(startPoint: lastPoint, endPoint: currentPoint, color: strokeColor)
         strokes.append(stroke)
         lastPoint = nil
-        print(currentPoint)
         setNeedsDisplay()
         
-        timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { (timer) in
+        addToCurPath(point: currentPoint)
+        addCurPathToTrace()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (timer) in
             //Do stuff 15ms later
             self.erase()
             
-            let trace = [   //the trace is an array of strokes
-                [   //a stroke is an array of pairs of captured (x, y) coordinates
-                    [300, 310, 320, 330, 340], //x coordinate
-                    [320, 320, 320, 320, 320]  //y coordinate
-                    //each pair of (x, y) coordinates represents one sampling point
-                ]
-            ]
+//            let trace = [   //the trace is an array of strokes
+//                [   //a stroke is an array of pairs of captured (x, y) coordinates
+//                    [300, 310, 320, 330, 340], //x coordinate
+//                    [320, 320, 320, 320, 320]  //y coordinate
+//                    //each pair of (x, y) coordinates represents one sampling point
+//                ]
+//            ]
             
-            self.recognitionAPI.getTraceValue(trace: trace)
+            self.recognitionAPI.getTraceValue(trace: self.trace)
+            self.resetTrace()
+            
             self.recognitionAPI.onTraceRecognized = { text in
                 print("I got the text \(text)")
             }
@@ -87,6 +103,23 @@ class ScribbleView: UIView {
             context?.setStrokeColor(stroke.color)
             context?.strokePath()
         }
+    }
+    
+    ///// Helper Functions //////
+    
+    func addToCurPath(point : CGPoint) {
+        curPath.xCoods.append(Float(point.x))
+        curPath.yCoods.append(Float(point.y))
+    }
+    
+    func addCurPathToTrace() {
+        trace.append([curPath.xCoods, curPath.yCoods])
+        // reset current path
+        curPath = Path()
+    }
+    
+    func resetTrace() {
+        trace = []
     }
     
     func erase() {

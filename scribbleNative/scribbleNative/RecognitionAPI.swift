@@ -12,10 +12,10 @@ import SwiftyJSON
 
 class RecognitionAPI {
     
-    var onTraceRecognized : (([String]) -> ())?
+    var onTraceRecognized : ((String) -> ())?
     let googleAPIEndpoint : String = "https://www.google.com.tw/inputtools/request?ime=handwriting&app=mobilesearch&cs=1&oe=UTF-8"
     
-    func getTraceValue (trace : [[[Int]]]) {
+    func getTraceValue (trace : [[[Float]]]) {
         
         let parameters : Parameters = [
             "options": "enable_pre_space",
@@ -35,7 +35,7 @@ class RecognitionAPI {
             if let data = response.data {
                 let jsonResponse = JSON.init(parseJSON: String(data: data, encoding: .utf8)!)
                 
-                self.onTraceRecognized?(jsonResponse[1][0][1].arrayObject as! [String])
+                self.onTraceRecognized?(jsonResponse[1][0][1][0].string!)
             }
         }
     }
