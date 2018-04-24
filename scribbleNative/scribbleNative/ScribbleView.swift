@@ -75,14 +75,6 @@ class ScribbleView: UIView {
             //Do stuff 15ms later
             self.erase()
             
-//            let trace = [   //the trace is an array of strokes
-//                [   //a stroke is an array of pairs of captured (x, y) coordinates
-//                    [300, 310, 320, 330, 340], //x coordinate
-//                    [320, 320, 320, 320, 320]  //y coordinate
-//                    //each pair of (x, y) coordinates represents one sampling point
-//                ]
-//            ]
-            
             self.recognitionAPI.getTraceValue(trace: self.trace)
             self.resetTrace()
             
