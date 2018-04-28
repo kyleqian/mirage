@@ -17,7 +17,8 @@ public class M_Rotation : WebSocketBehavior
 public class M_Input : WebSocketBehavior
 {
     protected override void OnMessage(MessageEventArgs e)
-    {
+	{
+		SocketHost.instance.curText = e.Data;
         Debug.Log(e.Data);
     }
 }
@@ -28,6 +29,7 @@ public class SocketHost : MonoBehaviour
     public float pitch;
     public float yaw;
     public float roll;
+	public string curText;
     WebSocketServer wssv;
 
 	void Awake()
@@ -40,6 +42,7 @@ public class SocketHost : MonoBehaviour
         wssv = new WebSocketServer(9001);
         wssv.AddWebSocketService<M_Rotation>("/M_Rotation");
         wssv.AddWebSocketService<M_Input>("/M_Input");
+
         wssv.Start();
     }
 }
