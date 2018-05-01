@@ -13,6 +13,7 @@ class ScribbleView: UIView {
     weak var delegate: NetworkDelegate?
     
     var isDrawing = false
+    var isMultiTouching = false
     var lastPoint: CGPoint!
     var strokeColor: CGColor = UIColor.black.cgColor
     var strokes = [Stroke]()
@@ -38,6 +39,14 @@ class ScribbleView: UIView {
         // Hmm, why are both this and the prev check necessary?
         guard let touch = touches.first else { return }
         
+        // Hacky multi-touch handler
+        if touches.count > 1 {
+            guard !isMultiTouching else { return }
+            isDrawing = false
+            isMultiTouching = true
+            return
+        }
+        
         let currentPoint = touch.location(in: self)
         lastPoint = currentPoint
         
@@ -61,6 +70,13 @@ class ScribbleView: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Hacky
+        if isMultiTouching {
+            self.delegate?.sendText(text: "SEND_SPACE")
+            isMultiTouching = false
+            return
+        }
+        
         guard isDrawing else { return }
         isDrawing = false
         guard let touch = touches.first else { return }
@@ -81,7 +97,6 @@ class ScribbleView: UIView {
             self.resetTrace()
             
             self.recognitionAPI.onTraceRecognized = { text in
-//                print("I got the text \(text)")
                 self.delegate?.sendText(text: text)
             }
         }

@@ -32,11 +32,11 @@ class ViewController: UIViewController, NetworkDelegate {
         })
         
         let upBlock = { () -> Void in
-            self.inputSocket.write(string: "UP_PRESS")
+            self.sendText(text: "UP_PRESS")
         }
         
         let downBlock = { () -> Void in
-            self.inputSocket.write(string: "DOWN_PRESS")
+            self.sendText(text: "DOWN_PRESS")
         }
         
         volumeButtonHandler = JPSVolumeButtonHandler(up: upBlock, downBlock: downBlock)
@@ -46,6 +46,14 @@ class ViewController: UIViewController, NetworkDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation.isLandscape {
+            self.sendText(text: "ORIENTATION_LANDSCAPE")
+        } else {
+            self.sendText(text: "ORIENTATION_PORTRAIT")
+        }
     }
     
     func sendText(text: String) {
