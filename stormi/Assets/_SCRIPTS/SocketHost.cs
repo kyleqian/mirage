@@ -1,25 +1,24 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 
 public class M_Rotation : WebSocketBehavior
 {
-	protected override void OnMessage(MessageEventArgs e)
-	{
-        //Debug.Log(e.Data);
+    protected override void OnMessage(MessageEventArgs e)
+    {
         string[] rotationData = e.Data.Split(';');
         SocketHost.instance.pitch = float.Parse(rotationData[0]);
         SocketHost.instance.yaw = float.Parse(rotationData[1]);
         SocketHost.instance.roll = float.Parse(rotationData[2]);
-	}
+    }
 }
 
 public class M_Input : WebSocketBehavior
 {
     protected override void OnMessage(MessageEventArgs e)
-	{
-		SocketHost.instance.curText = e.Data;
-        Debug.Log(e.Data);
+    {
+        SocketHost.instance.curText = e.Data;
     }
 }
 
@@ -29,19 +28,28 @@ public class SocketHost : MonoBehaviour
     public float pitch;
     public float yaw;
     public float roll;
-	public string curText;
+    public string curText;
+
     WebSocketServer wssv;
 
-	void Awake()
-	{
+    void Awake()
+    {
         instance = this;
-	}
+    }
 
-	void Start()
+    void Start()
     {
         wssv = new WebSocketServer(9001);
-        wssv.AddWebSocketService<M_Rotation>("/M_Rotation");
-        wssv.AddWebSocketService<M_Input>("/M_Input");
+
+        wssv.AddWebSocketService<M_Rotation>("/M_Rotation", () => new M_Rotation()
+        {
+            IgnoreExtensions = true
+        });
+
+        wssv.AddWebSocketService<M_Input>("/M_Input", () => new M_Input()
+        {
+            IgnoreExtensions = true
+        });
 
         wssv.Start();
     }
