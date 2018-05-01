@@ -13,7 +13,8 @@ class ScribbleView: UIView {
     weak var delegate: NetworkDelegate?
     
     var isDrawing = false
-    var isMultiTouching = false
+    var isDoubleTouching = false
+    var isTripleTouching = false
     var lastPoint: CGPoint!
     var strokeColor: CGColor = UIColor.black.cgColor
     var strokes = [Stroke]()
@@ -41,9 +42,13 @@ class ScribbleView: UIView {
         
         // Hacky multi-touch handler
         if touches.count > 1 {
-            guard !isMultiTouching else { return }
+            guard !(isDoubleTouching || isTripleTouching) else { return }
             isDrawing = false
-            isMultiTouching = true
+            if touches.count == 2{
+                isDoubleTouching = true
+            } else {
+                isTripleTouching = true
+            }
             return
         }
         
@@ -71,9 +76,15 @@ class ScribbleView: UIView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Hacky
-        if isMultiTouching {
-            self.delegate?.sendText(text: "SEND_SPACE")
-            isMultiTouching = false
+        if isDoubleTouching || isTripleTouching {
+            if isDoubleTouching {
+                self.delegate?.sendText(text: "SEND_SPACE")
+            } else if isTripleTouching {
+                self.delegate?.sendText(text: "SEND_MULTI_SWIPE")
+            }
+            
+            isDoubleTouching = false
+            isTripleTouching = false
             return
         }
         
