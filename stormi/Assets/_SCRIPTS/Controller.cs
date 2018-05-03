@@ -2,29 +2,64 @@
 
 public class Controller : MonoBehaviour
 {
-    public enum ControllerState { Controller, Sticky };
-    public ControllerState state;
-//	public static const string UP_PRESS = "UP_PRESS";
-//	public static const string DOWN_PRESS = "DOWN_PRESS";
+    //bool currFrameSelecting;
+    //bool currFrameUnselecting;
+    //bool currentlySelecting;
+    //public bool CurrentlySelecting {
+    //    get {
+    //        return currentlySelecting;
+    //    }
+    //    set
+    //    {
+    //        if (currentlySelecting != value)
+    //        {
+    //            currFrameSelecting = value;
+    //            currFrameUnselecting = !value;
+    //        }
+    //        currentlySelecting = value;
+    //    }
+    //}
 
-    bool currentlySelecting;
-
-	void Start()
+    // Hacky
+    bool inputDown;
+    public bool InputDown
     {
-        state = ControllerState.Controller;
+        get { return inputDown; }
+        set
+        {
+            inputUp = false;
+            inputDown = value;
+        }
+    }
+
+    // Hacky
+    bool inputUp;
+    public bool InputUp
+    {
+        get { return inputUp; }
+        set
+        {
+            inputDown = false;
+            inputUp = value;
+        }
+    }
+
+	void OnEnable()
+	{
+        //currentlySelecting = false;
 	}
-	
+
 	void Update()
     {
 		RaycastHit hit;
 
 		if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
 		{
-			if (currentlySelecting)
-			{
-				Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
-				// Move around sticky/item
-			}
+			//if (currentlySelecting)
+			//{
+			//	Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
+			//	// Move around sticky/item
+			//}
 		}
 	}
 }

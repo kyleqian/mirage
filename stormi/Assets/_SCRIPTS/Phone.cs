@@ -2,12 +2,13 @@
 
 public class Phone : MonoBehaviour
 {
-    public enum ControllerState { Controller, Sticky };
-    public ControllerState state;
+    public enum PhoneState { Controller, Sticky };
+    public PhoneState state;
 	public StickyPad stickyPad;
 	public Controller controller;
-	private const string UP_PRESS = "UP_PRESS";
-	private const string DOWN_PRESS = "DOWN_PRESS";
+
+	const string UP_PRESS = "UP_PRESS";
+	const string DOWN_PRESS = "DOWN_PRESS";
 
 	void OnEnable()
 	{
@@ -21,48 +22,42 @@ public class Phone : MonoBehaviour
 
 	void Start()
     {
-        state = ControllerState.Controller;
-	}
-	
-	void Update()
+        state = PhoneState.Controller;
+    }
+    
+    void Update()
     {
+        UpdateVisibility();
         UpdatePose();
-
-        if (state == ControllerState.Controller)
-        {
-//            UpdateControllerController();
-        }
-        else if (state == ControllerState.Sticky)
-        {
-//            UpdateControllerSticky();
-        }
 	}
 
     void OnReceivedMessage(string message)
     {
-		if (state == ControllerState.Controller) {
+		if (state == PhoneState.Controller) {
 			switch (message)
 			{
-			// TEMP
-			case UP_PRESS:
-				
-			case DOWN_PRESS:
-
-			default:
-				// Received text
-				break;
+    			// TEMP
+    			case UP_PRESS:
+                    controller.InputDown = true;
+                    break;
+    			case DOWN_PRESS:
+                    controller.InputUp = true;
+                    break;
+    			default:
+    				// Received text
+    				break;
 			}
-		} else {
+        } else if (state == PhoneState.Sticky) {
 			switch (message)
 			{
-			// TEMP
-			case UP_PRESS:
+    			// TEMP
+    			case UP_PRESS:
 
-			case DOWN_PRESS:
+    			case DOWN_PRESS:
 
-			default:
-				// Received text
-				break;
+    			default:
+    				// Received text
+    				break;
 			}
 		}
         
@@ -71,5 +66,11 @@ public class Phone : MonoBehaviour
     void UpdatePose()
     {
         transform.localEulerAngles = new Vector3(-Mathf.Rad2Deg * SocketHost.instance.pitch, -Mathf.Rad2Deg * SocketHost.instance.yaw, -Mathf.Rad2Deg * SocketHost.instance.roll);
+    }
+
+    void UpdateVisibility()
+    {
+        controller.gameObject.SetActive(state == PhoneState.Controller);
+        stickyPad.gameObject.SetActive(state == PhoneState.Sticky);
     }
 }
