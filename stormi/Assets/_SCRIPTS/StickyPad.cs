@@ -9,6 +9,8 @@ public class StickyPad : MonoBehaviour {
 //	public StickyPadState state;
 	public GameObject NewStickyPrefab;
 	Text textBox;
+
+	// source of truth for current text
 	private string currentText;
 
 	// janky because we're mixing state with events
@@ -24,8 +26,7 @@ public class StickyPad : MonoBehaviour {
 
 	void Start () {
 		// Get the canvas, then get the text object, then get the text component
-		textBox = transform.GetChild(0).GetChild(0).GetComponent<Text>();
-//		print (textBox);
+		textBox = getTextboxFromSticky(this.gameObject);
 	}
 	
 	// Update is called once per frame
@@ -56,24 +57,23 @@ public class StickyPad : MonoBehaviour {
 	}
 
 	private void addSticky() {
-		print("Adding sticky...");
 		// Get the current pointing location to board
 		RaycastHit hit;
 
 		if (Physics.Raycast (transform.position, transform.forward, out hit, Mathf.Infinity)) {
 			if (hit.transform.tag == "Board") {
 				// Instantiate new sticky prefab on the board with the text
-				GameObject newStick = Instantiate(NewStickyPrefab,
+				GameObject newSticky = Instantiate(NewStickyPrefab,
 					hit.point,
 					Quaternion.identity) as GameObject;
 
+				// Transfer text to that sticky
+				getTextboxFromSticky(newSticky).text = currentText;
+
 				// Reset the current sticky pad text
+				wipeStickyPad();
 			}
 		}
-
-
-
-
 	}
 
 	public void toggleAddSticky() {
@@ -89,9 +89,14 @@ public class StickyPad : MonoBehaviour {
 	}
 
 	private int getBeforeLastWordIndex(string words) {
-		int beforeLastWordIndex = words.LastIndexOf (" ");
-		beforeLastWordIndex = beforeLastWordIndex >= 0 ? beforeLastWordIndex : 0;
-		print (beforeLastWordIndex);
-		return beforeLastWordIndex;
+		return words.LastIndexOf (" ");
+	}
+
+	private void wipeStickyPad() {
+		currentText = "";
+	}
+
+	private Text getTextboxFromSticky(GameObject sticky) {
+		return sticky.transform.GetChild(0).GetChild(0).GetComponent<Text>();
 	}
 }
