@@ -2,16 +2,17 @@
 
 public class Controller : MonoBehaviour
 {
-    public enum ControllerState { Neutral, MoveSticky, MoveBoard };
+    //public enum ControllerState { Neutral, MoveSticky, MoveBoard };
 
     public bool inputDown;
     public bool inputUp;
 
-    ControllerState state;
+    //ControllerState state;
+    GameObject objectBeingMoved;
 
 	void OnEnable()
 	{
-        state = ControllerState.Neutral;
+        //state = ControllerState.Neutral;
 	}
 
 	void Update()
@@ -33,30 +34,35 @@ public class Controller : MonoBehaviour
 
             if (inputDown)
             {
-                
+                // Select thing based on what it is, and ATTACH
+                if (hit.transform.tag == "Sticky")
+                {
+                    //state = ControllerState.MoveSticky;
+                    objectBeingMoved = hit.transform.gameObject;
+                    objectBeingMoved.GetComponent<TestSticky>().PickedUpBy(transform.parent);
+                }
+                else if (hit.transform.tag == "Board")
+                {
+                    //state = ControllerState.MoveBoard;
+                }
             }
             else if (inputUp)
             {
-                
+                // Let go of thing, and do anything else
+                //state = ControllerState.Neutral;
+
+                objectBeingMoved.GetComponent<TestSticky>().DroppedOff();
+                objectBeingMoved = null;
             }
 
-
-            switch (state)
-            {
-                case ControllerState.MoveBoard:
-                    break;
-                case ControllerState.MoveSticky:
-                    break;
-                default:
-                    break;
-            }
-
-
-
-            //if (currentlySelecting)
+            //switch (state)
             //{
-            //  Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
-            //  // Move around sticky/item
+            //    case ControllerState.MoveBoard:
+            //        // Keep in some axis
+            //        break;
+            //    case ControllerState.MoveSticky:
+            //        // Keep in some axis / on the board / throw away
+            //        break;
             //}
         }
     }

@@ -12,6 +12,8 @@ public class Phone : MonoBehaviour
 	const string DOWN_PRESS = "DOWN_PRESS";
     const string ORIENTATION_LANDSCAPE = "ORIENTATION_LANDSCAPE";
     const string ORIENTATION_PORTRAIT = "ORIENTATION_PORTRAIT";
+    const string PORTRAIT_TOUCH_BEGAN = "PORTRAIT_TOUCH_BEGAN";
+    const string PORTRAIT_TOUCH_ENDED = "PORTRAIT_TOUCH_ENDED";
 
 	void OnEnable()
 	{
@@ -51,31 +53,26 @@ public class Phone : MonoBehaviour
         {
 			switch (message)
 			{
-    			// TEMP
-    			case UP_PRESS:
+                case PORTRAIT_TOUCH_BEGAN:
                     controller.inputDown = true;
                     break;
-    			case DOWN_PRESS:
+                case PORTRAIT_TOUCH_ENDED:
                     controller.inputUp = true;
                     break;
-    			default:
-    				// Received text
-    				break;
 			}
         }
         else if (state == PhoneState.Sticky)
         {
 			switch (message)
 			{
-    			// TEMP
 			case UP_PRESS:
 				break;
 			case DOWN_PRESS:
 				stickyPad.state = StickyPad.StickyPadState.DELETE;
 				break;
 			default:
-				stickyPad.state = StickyPad.StickyPadState.WRITE;
-				// Received text
+                // Received text
+                stickyPad.state = StickyPad.StickyPadState.WRITE;
 				break;
 			}
 		}
