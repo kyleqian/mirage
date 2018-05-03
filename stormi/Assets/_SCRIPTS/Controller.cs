@@ -9,10 +9,17 @@ public class Controller : MonoBehaviour
 
     //ControllerState state;
     GameObject objectBeingMoved;
+    LineRenderer lineRenderer;
 
 	void OnEnable()
 	{
         //state = ControllerState.Neutral;
+	}
+
+	void Start()
+	{
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.positionCount = 2;
 	}
 
 	void Update()
@@ -25,10 +32,12 @@ public class Controller : MonoBehaviour
     void PerformRaycast()
     {
         RaycastHit hit;
-
         if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
         {
-            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
+            lineRenderer.enabled = true;
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, hit.point + (hit.point - transform.position) * 100);
+            //Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
 
             // Highlight stuff
 
@@ -84,12 +93,9 @@ public class Controller : MonoBehaviour
                 }
             }
         }
-        //else
-        //{
-        //    if (objectBeingMoved && inputUp)
-        //    {
-        //        Debug.Log("Delete sticky!!");
-        //    }
-        //}
+        else
+        {
+            lineRenderer.enabled = false;
+        }
     }
 }
