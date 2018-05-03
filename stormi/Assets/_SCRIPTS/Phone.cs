@@ -10,6 +10,8 @@ public class Phone : MonoBehaviour
 
 	const string UP_PRESS = "UP_PRESS";
 	const string DOWN_PRESS = "DOWN_PRESS";
+    const string ORIENTATION_LANDSCAPE = "ORIENTATION_LANDSCAPE";
+    const string ORIENTATION_PORTRAIT = "ORIENTATION_PORTRAIT";
 
 	void OnEnable()
 	{
@@ -34,7 +36,19 @@ public class Phone : MonoBehaviour
 
     void OnReceivedMessage(string message)
     {
-		if (state == PhoneState.Controller) {
+        if (message == ORIENTATION_PORTRAIT)
+        {
+            state = PhoneState.Controller;
+            return;
+        }
+        else if (message == ORIENTATION_LANDSCAPE)
+        {
+            state = PhoneState.Sticky;
+            return;
+        }
+
+		if (state == PhoneState.Controller)
+        {
 			switch (message)
 			{
     			// TEMP
@@ -48,7 +62,9 @@ public class Phone : MonoBehaviour
     				// Received text
     				break;
 			}
-        } else if (state == PhoneState.Sticky) {
+        }
+        else if (state == PhoneState.Sticky)
+        {
 			switch (message)
 			{
     			// TEMP
@@ -63,7 +79,6 @@ public class Phone : MonoBehaviour
 				break;
 			}
 		}
-        
     }
 
     void UpdatePose()
