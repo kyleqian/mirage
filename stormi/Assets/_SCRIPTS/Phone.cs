@@ -51,13 +51,11 @@ public class Phone : MonoBehaviour
 			switch (message)
 			{
     			// TEMP
-			case UP_PRESS:
-				break;
 			case DOWN_PRESS:
-				stickyPad.state = StickyPad.StickyPadState.DELETE;
+				stickyPad.deleteLastWord ();
 				break;
 			default:
-				stickyPad.state = StickyPad.StickyPadState.WRITE;
+				stickyPad.write (message);
 				// Received text
 				break;
 			}
