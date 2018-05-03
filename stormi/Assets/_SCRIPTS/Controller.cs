@@ -5,6 +5,18 @@ public class Controller : MonoBehaviour
     public enum ControllerState { Controller, Sticky };
     public ControllerState state;
 
+    bool controllerCurrentlySelecting;
+
+	void OnEnable()
+	{
+		SocketHost.ReceivedMessage += OnReceivedMessage;
+    }
+
+	void OnDisable()
+	{
+        SocketHost.ReceivedMessage -= OnReceivedMessage;
+	}
+
 	void Start()
     {
         state = ControllerState.Controller;
@@ -24,6 +36,22 @@ public class Controller : MonoBehaviour
         }
 	}
 
+    void OnReceivedMessage(string message)
+    {
+        switch (message)
+        {
+            // TEMP
+            case "UP_PRESS":
+                controllerCurrentlySelecting = true;
+                break;
+            case "DOWN_PRESS":
+                controllerCurrentlySelecting = false;
+                break;
+            default:
+                break;
+        }
+    }
+
     void UpdatePose()
     {
         transform.localEulerAngles = new Vector3(-Mathf.Rad2Deg * SocketHost.instance.pitch, -Mathf.Rad2Deg * SocketHost.instance.yaw, -Mathf.Rad2Deg * SocketHost.instance.roll);
@@ -35,7 +63,11 @@ public class Controller : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
         {
-            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.yellow);
+            if (controllerCurrentlySelecting)
+            {
+				Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
+                // Move around sticky/item
+            }
         }
     }
 
