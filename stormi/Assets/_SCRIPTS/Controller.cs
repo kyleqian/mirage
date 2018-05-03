@@ -1,14 +1,46 @@
 ﻿using UnityEngine;
 
-public class Controller : MonoBehaviour {
+public class Controller : MonoBehaviour
+{
+    public enum ControllerState { Controller, Sticky };
+    public ControllerState state;
 
-	// Use this for initialization
-	void Start () {
-		
+	void Start()
+    {
+        state = ControllerState.Controller;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        transform.localEulerAngles = new Vector3(-Mathf.Rad2Deg * SocketHost.instance.pitch, -Mathf.Rad2Deg * SocketHost.instance.yaw, -Mathf.Rad2Deg * SocketHost.instance.roll);
+	void Update()
+    {
+        UpdatePose();
+
+        if (state == ControllerState.Controller)
+        {
+            UpdateControllerController();
+        }
+        else if (state == ControllerState.Sticky)
+        {
+            UpdateControllerSticky();
+        }
 	}
+
+    void UpdatePose()
+    {
+        transform.localEulerAngles = new Vector3(-Mathf.Rad2Deg * SocketHost.instance.pitch, -Mathf.Rad2Deg * SocketHost.instance.yaw, -Mathf.Rad2Deg * SocketHost.instance.roll);
+    }
+
+    void UpdateControllerController()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+        {
+            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.yellow);
+        }
+    }
+
+    void UpdateControllerSticky()
+    {
+        
+    }
 }

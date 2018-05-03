@@ -11,6 +11,8 @@ public class M_Rotation : WebSocketBehavior
         SocketHost.instance.pitch = float.Parse(rotationData[0]);
         SocketHost.instance.yaw = float.Parse(rotationData[1]);
         SocketHost.instance.roll = float.Parse(rotationData[2]);
+
+        SocketHost.InvokeReceivedPoseData();
     }
 }
 
@@ -29,6 +31,9 @@ public class SocketHost : MonoBehaviour
     public float yaw;
     public float roll;
     public string curText;
+
+    public delegate void OnReceivedPoseData();
+    public static event OnReceivedPoseData ReceivedPoseData;
 
     WebSocketServer wssv;
 
@@ -52,5 +57,13 @@ public class SocketHost : MonoBehaviour
         });
 
         wssv.Start();
+    }
+
+    public static void InvokeReceivedPoseData()
+    {
+        if (ReceivedPoseData != null)
+        {
+			ReceivedPoseData();
+        }
     }
 }
