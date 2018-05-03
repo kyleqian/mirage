@@ -4,18 +4,10 @@ public class Controller : MonoBehaviour
 {
     public enum ControllerState { Controller, Sticky };
     public ControllerState state;
+//	public static const string UP_PRESS = "UP_PRESS";
+//	public static const string DOWN_PRESS = "DOWN_PRESS";
 
-    bool controllerCurrentlySelecting;
-
-	void OnEnable()
-	{
-		SocketHost.ReceivedMessage += OnReceivedMessage;
-    }
-
-	void OnDisable()
-	{
-        SocketHost.ReceivedMessage -= OnReceivedMessage;
-	}
+    bool currentlySelecting;
 
 	void Start()
     {
@@ -24,55 +16,15 @@ public class Controller : MonoBehaviour
 	
 	void Update()
     {
-        UpdatePose();
+		RaycastHit hit;
 
-        if (state == ControllerState.Controller)
-        {
-            UpdateControllerController();
-        }
-        else if (state == ControllerState.Sticky)
-        {
-            UpdateControllerSticky();
-        }
-	}
-
-    void OnReceivedMessage(string message)
-    {
-        switch (message)
-        {
-            // TEMP
-            case "UP_PRESS":
-                controllerCurrentlySelecting = true;
-                break;
-            case "DOWN_PRESS":
-                controllerCurrentlySelecting = false;
-                break;
-            default:
-                break;
-        }
-    }
-
-    void UpdatePose()
-    {
-        transform.localEulerAngles = new Vector3(-Mathf.Rad2Deg * SocketHost.instance.pitch, -Mathf.Rad2Deg * SocketHost.instance.yaw, -Mathf.Rad2Deg * SocketHost.instance.roll);
-    }
-
-    void UpdateControllerController()
-    {
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
-        {
-            if (controllerCurrentlySelecting)
-            {
+		if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+		{
+			if (currentlySelecting)
+			{
 				Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
-                // Move around sticky/item
-            }
-        }
-    }
-
-    void UpdateControllerSticky()
-    {
-        
-    }
+				// Move around sticky/item
+			}
+		}
+	}
 }
