@@ -9,6 +9,8 @@ public class Phone : MonoBehaviour
 	public Controller controller;
 
 	const string UP_PRESS = "UP_PRESS";
+	const string SPACE = "SEND_SPACE";
+	const string MULTISWIPE = "SEND_MULTI_SWIPE";
 	const string DOWN_PRESS = "DOWN_PRESS";
     const string ORIENTATION_LANDSCAPE = "ORIENTATION_LANDSCAPE";
     const string ORIENTATION_PORTRAIT = "ORIENTATION_PORTRAIT";
@@ -25,7 +27,7 @@ public class Phone : MonoBehaviour
 
 	void Start()
     {
-		state = PhoneState.Sticky;
+		state = PhoneState.Controller;
     }
     
     void Update()
@@ -67,7 +69,12 @@ public class Phone : MonoBehaviour
         {
 			switch (message)
 			{
-    			// TEMP
+			case SPACE:
+				stickyPad.addSpace ();
+				break;
+			case MULTISWIPE:
+				stickyPad.addSticky ();
+				break;
 			case DOWN_PRESS:
 				stickyPad.deleteLastWord ();
 				break;
