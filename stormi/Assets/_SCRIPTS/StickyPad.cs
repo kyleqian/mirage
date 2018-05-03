@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StickyPad : MonoBehaviour {
 
-	private enum StickyPadState { DELETE, ADD_STICKY, WRITE };
+	public enum StickyPadState { DELETE, ADD_STICKY, WRITE };
 	public StickyPadState state;
 	Text textBox;
 
@@ -19,7 +19,7 @@ public class StickyPad : MonoBehaviour {
 
 	void Start () {
 		// Get the canvas, then get the text object, then get the text component
-//		textBox = transform.GetChild(0).GetChild(0).GetComponent<Text>();
+		textBox = transform.GetChild(0).GetChild(0).GetComponent<Text>();
 //		print (textBox);
 	}
 	
@@ -42,5 +42,6 @@ public class StickyPad : MonoBehaviour {
 	int getBeforeLastWordIndex(string words) {
 		int beforeLastWordIndex = words.LastIndexOf (" ");
 		beforeLastWordIndex = beforeLastWordIndex >= 0 ? beforeLastWordIndex : 0;
+		return beforeLastWordIndex;
 	}
 }

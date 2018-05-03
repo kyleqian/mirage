@@ -22,7 +22,7 @@ public class Phone : MonoBehaviour
 
 	void Start()
     {
-        state = PhoneState.Controller;
+		state = PhoneState.Sticky;
     }
     
     void Update()
@@ -51,13 +51,15 @@ public class Phone : MonoBehaviour
 			switch (message)
 			{
     			// TEMP
-    			case UP_PRESS:
-
-    			case DOWN_PRESS:
-
-    			default:
-    				// Received text
-    				break;
+			case UP_PRESS:
+				break;
+			case DOWN_PRESS:
+				stickyPad.state = StickyPad.StickyPadState.DELETE;
+				break;
+			default:
+				stickyPad.state = StickyPad.StickyPadState.WRITE;
+				// Received text
+				break;
 			}
 		}
         
