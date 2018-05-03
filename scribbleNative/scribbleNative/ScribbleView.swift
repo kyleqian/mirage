@@ -13,6 +13,8 @@ class ScribbleView: UIView {
     weak var delegate: NetworkDelegate?
     
     var isDrawing = false
+    var isDoubleTouching = false
+    var isMultiTouching = false
     var lastPoint: CGPoint!
     var strokeColor: CGColor = UIColor.black.cgColor
     var strokes = [Stroke]()
@@ -33,10 +35,20 @@ class ScribbleView: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // TODO
-        guard (event?.allTouches?.count)! <= 1 else {
+        let numTotalTouches = (event?.allTouches?.count)!
+        if numTotalTouches > 1 {
             erase()
             resetTrace()
             isDrawing = false
+            
+            // Can upgrade but not downgrade
+            if numTotalTouches == 2 && !isMultiTouching {
+                isDoubleTouching = true
+            } else if numTotalTouches > 2 {
+                isMultiTouching = true
+                isDoubleTouching = false
+            }
+            
             return
         }
         
@@ -74,14 +86,16 @@ class ScribbleView: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         // TODO
         if !isDrawing {
-            let numTouchesBeforeLift = (event?.allTouches?.count)!
-            let numTouchesLifted = touches.count
-            if numTouchesBeforeLift > 1 {
-                if numTouchesBeforeLift == 2 && numTouchesLifted > 1 {
+            let numTouchesRemaining = (event?.allTouches?.count)! - touches.count
+            if numTouchesRemaining == 0 {
+                if isDoubleTouching {
                     self.delegate?.sendText(text: "SEND_SPACE")
-                } else if numTouchesBeforeLift > 2 && numTouchesLifted > 1 {
+                } else if isMultiTouching {
                     self.delegate?.sendText(text: "SEND_MULTI_SWIPE")
                 }
+                
+                isDoubleTouching = false
+                isMultiTouching = false
             }
         }
         
