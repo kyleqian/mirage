@@ -39,8 +39,9 @@ public class StickyPad : MonoBehaviour {
 //		textBox.text = SocketHost.instance.curText;
 	}
 
-	//int getBeforeLastWordIndex(string words) {
-	//	int beforeLastWordIndex = words.LastIndexOf (" ");
-	//	beforeLastWordIndex = beforeLastWordIndex >= 0 ? beforeLastWordIndex : 0;
-	//}
+	int getBeforeLastWordIndex(string words) {
+		int beforeLastWordIndex = words.LastIndexOf (" ");
+		beforeLastWordIndex = beforeLastWordIndex >= 0 ? beforeLastWordIndex : 0;
+		return beforeLastWordIndex;
+	}
 }
