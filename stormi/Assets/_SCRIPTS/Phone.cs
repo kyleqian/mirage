@@ -3,6 +3,7 @@
 public class Phone : MonoBehaviour
 {
     public enum PhoneState { Controller, Sticky };
+
     public PhoneState state;
 	public StickyPad stickyPad;
 	public Controller controller;
@@ -38,10 +39,10 @@ public class Phone : MonoBehaviour
 			{
     			// TEMP
     			case UP_PRESS:
-                    controller.InputDown = true;
+                    controller.inputDown = true;
                     break;
     			case DOWN_PRESS:
-                    controller.InputUp = true;
+                    controller.inputUp = true;
                     break;
     			default:
     				// Received text

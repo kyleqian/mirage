@@ -2,64 +2,62 @@
 
 public class Controller : MonoBehaviour
 {
-    //bool currFrameSelecting;
-    //bool currFrameUnselecting;
-    //bool currentlySelecting;
-    //public bool CurrentlySelecting {
-    //    get {
-    //        return currentlySelecting;
-    //    }
-    //    set
-    //    {
-    //        if (currentlySelecting != value)
-    //        {
-    //            currFrameSelecting = value;
-    //            currFrameUnselecting = !value;
-    //        }
-    //        currentlySelecting = value;
-    //    }
-    //}
+    public enum ControllerState { Neutral, MoveSticky, MoveBoard };
 
-    // Hacky
-    bool inputDown;
-    public bool InputDown
-    {
-        get { return inputDown; }
-        set
-        {
-            inputUp = false;
-            inputDown = value;
-        }
-    }
+    public bool inputDown;
+    public bool inputUp;
 
-    // Hacky
-    bool inputUp;
-    public bool InputUp
-    {
-        get { return inputUp; }
-        set
-        {
-            inputDown = false;
-            inputUp = value;
-        }
-    }
+    ControllerState state;
 
 	void OnEnable()
 	{
-        //currentlySelecting = false;
+        state = ControllerState.Neutral;
 	}
 
 	void Update()
     {
-		RaycastHit hit;
-
-		if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
-		{
-			//if (currentlySelecting)
-			//{
-			//	Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
-			//	// Move around sticky/item
-			//}
-		}
+        PerformRaycast();
+        inputDown = false;
+        inputUp = false;
 	}
+
+    void PerformRaycast()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+        {
+            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
+
+            // Highlight stuff
+
+            if (inputDown)
+            {
+                
+            }
+            else if (inputUp)
+            {
+                
+            }
+
+
+            switch (state)
+            {
+                case ControllerState.MoveBoard:
+                    break;
+                case ControllerState.MoveSticky:
+                    break;
+                default:
+                    break;
+            }
+
+
+
+            //if (currentlySelecting)
+            //{
+            //  Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
+            //  // Move around sticky/item
+            //}
+        }
+    }
 }
