@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -429,7 +429,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 5, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &2096620856
 MeshFilter:
@@ -468,7 +468,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4210837580040192, guid: d829f8b1e5321409c83cdb0b5bf4087b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.36
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4210837580040192, guid: d829f8b1e5321409c83cdb0b5bf4087b, type: 2}
       propertyPath: m_LocalRotation.x
@@ -494,53 +494,6 @@ Prefab:
       propertyPath: m_Name
       value: Phone
       objectReference: {fileID: 0}
-    - target: {fileID: 1003663015267450, guid: d829f8b1e5321409c83cdb0b5bf4087b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224095743402008654, guid: d829f8b1e5321409c83cdb0b5bf4087b,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 224223884944128074, guid: d829f8b1e5321409c83cdb0b5bf4087b,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 224223884944128074, guid: d829f8b1e5321409c83cdb0b5bf4087b,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 224223884944128074, guid: d829f8b1e5321409c83cdb0b5bf4087b,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224223884944128074, guid: d829f8b1e5321409c83cdb0b5bf4087b,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114145391608786654, guid: d829f8b1e5321409c83cdb0b5bf4087b,
-        type: 2}
-      propertyPath: NewStickyPrefab
-      value: 
-      objectReference: {fileID: 1150899170415474, guid: 77ac524e42ed1455588ebea0ea390cec,
-        type: 2}
-    - target: {fileID: 114679897917719080, guid: d829f8b1e5321409c83cdb0b5bf4087b,
-        type: 2}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: bacc355b93f0c428abf3f1aee502bf7c,
-        type: 3}
-    - target: {fileID: 114679897917719080, guid: d829f8b1e5321409c83cdb0b5bf4087b,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 18
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114548492072065718, guid: d829f8b1e5321409c83cdb0b5bf4087b, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d829f8b1e5321409c83cdb0b5bf4087b, type: 2}
   m_IsPrefabParent: 0

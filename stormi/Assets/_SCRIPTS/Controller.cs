@@ -32,6 +32,32 @@ public class Controller : MonoBehaviour
 
             // Highlight stuff
 
+            // AHHHHHHHHH
+            if (objectBeingMoved)
+            {
+                if (inputUp)
+                {
+                    objectBeingMoved.GetComponent<StickyNote>().DroppedOff();
+
+                    // Drop object HACK HACK
+                    if (hit.point.x < -5 || hit.point.x > 5 ||
+                       hit.point.y < -5 || hit.point.y > 5)
+                    {
+						Destroy(objectBeingMoved);
+                    }
+
+					objectBeingMoved = null;
+
+                    return;
+                }
+
+                if (hit.transform.tag == "Board")
+                {
+                    objectBeingMoved.GetComponent<StickyNote>().MoveToRaycast(hit.point);
+                }
+                return;
+            }
+
             if (inputDown)
             {
                 // Select thing based on what it is, and ATTACH
@@ -39,7 +65,7 @@ public class Controller : MonoBehaviour
                 {
                     //state = ControllerState.MoveSticky;
                     objectBeingMoved = hit.transform.gameObject;
-                    objectBeingMoved.GetComponent<TestSticky>().PickedUpBy(transform.parent);
+                    objectBeingMoved.GetComponent<StickyNote>().PickedUpBy(transform.parent);
                 }
                 else if (hit.transform.tag == "Board")
                 {
@@ -51,19 +77,19 @@ public class Controller : MonoBehaviour
                 // Let go of thing, and do anything else
                 //state = ControllerState.Neutral;
 
-                objectBeingMoved.GetComponent<TestSticky>().DroppedOff();
-                objectBeingMoved = null;
+                if (objectBeingMoved)
+                {
+					objectBeingMoved.GetComponent<StickyNote>().DroppedOff();
+					objectBeingMoved = null;
+                }
             }
-
-            //switch (state)
-            //{
-            //    case ControllerState.MoveBoard:
-            //        // Keep in some axis
-            //        break;
-            //    case ControllerState.MoveSticky:
-            //        // Keep in some axis / on the board / throw away
-            //        break;
-            //}
         }
+        //else
+        //{
+        //    if (objectBeingMoved && inputUp)
+        //    {
+        //        Debug.Log("Delete sticky!!");
+        //    }
+        //}
     }
 }
