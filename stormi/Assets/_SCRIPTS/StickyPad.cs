@@ -7,8 +7,12 @@ public class StickyPad : MonoBehaviour {
 
 //	public enum StickyPadState { DELETE, ADD_STICKY, WRITE };
 //	public StickyPadState state;
+	public GameObject NewStickyPrefab;
 	Text textBox;
 	private string currentText;
+
+	// janky because we're mixing state with events
+	bool shouldAddSticky = false;
 
 //	void OnEnable() {
 //
@@ -27,6 +31,12 @@ public class StickyPad : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		textBox.text = currentText;
+
+		if (shouldAddSticky) {
+			addSticky ();
+			shouldAddSticky = false;
+		}
+
 //		switch (state) {
 //		case StickyPadState.DELETE:
 //			
@@ -45,12 +55,33 @@ public class StickyPad : MonoBehaviour {
 		currentText += " ";
 	}
 
-	public void addSticky() {
-		// Filler
+	private void addSticky() {
+		print("Adding sticky...");
+		// Get the current pointing location to board
+		RaycastHit hit;
+
+		if (Physics.Raycast (transform.position, transform.forward, out hit, Mathf.Infinity)) {
+			if (hit.transform.tag == "Board") {
+				// Instantiate new sticky prefab on the board with the text
+				GameObject newStick = Instantiate(NewStickyPrefab,
+					hit.point,
+					Quaternion.identity) as GameObject;
+
+				// Reset the current sticky pad text
+			}
+		}
+
+
+
+
+	}
+
+	public void toggleAddSticky() {
+		shouldAddSticky = true;
 	}
 
 	public void deleteLastWord() {
-		currentText = textBox.text.Substring(0, getBeforeLastWordIndex(textBox.text.TrimEnd()));
+		currentText = textBox.text.Substring(0, getBeforeLastWordIndex(textBox.text.TrimEnd()) + 1);
 	}
 
 	public void write(string lastText) {

@@ -71,7 +71,7 @@ public class Phone : MonoBehaviour
 				stickyPad.addSpace ();
 				break;
 			case MULTISWIPE:
-				stickyPad.addSticky ();
+				stickyPad.toggleAddSticky ();
 				break;
 			case DOWN_PRESS:
 				stickyPad.deleteLastWord ();

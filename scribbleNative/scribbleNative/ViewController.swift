@@ -18,8 +18,8 @@ class ViewController: UIViewController, NetworkDelegate {
     
     var motionManager = CMMotionManager()
     var volumeButtonHandler: JPSVolumeButtonHandler?
-    var rotationSocket = WebSocket(url: URL(string: "ws://10.0.1.134:9001/M_Rotation")!)
-    var inputSocket = WebSocket(url: URL(string: "ws://10.0.1.134:9001/M_Input")!)
+    var rotationSocket = WebSocket(url: URL(string: "ws://10.31.236.59:9001/M_Rotation")!)
+    var inputSocket = WebSocket(url: URL(string: "ws://10.31.236.59:9001/M_Input")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
