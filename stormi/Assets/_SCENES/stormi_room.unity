@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -446,7 +446,7 @@ Transform:
   m_GameObject: {fileID: 2096620853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 0.1}
+  m_LocalScale: {x: 30, y: 10, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -490,15 +490,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1563665872250200, guid: d829f8b1e5321409c83cdb0b5bf4087b, type: 2}
-      propertyPath: m_Name
-      value: Phone
-      objectReference: {fileID: 0}
     - target: {fileID: 114145391608786654, guid: d829f8b1e5321409c83cdb0b5bf4087b,
         type: 2}
       propertyPath: whiteboard
       value: 
       objectReference: {fileID: 2096620853}
+    - target: {fileID: 1563665872250200, guid: d829f8b1e5321409c83cdb0b5bf4087b, type: 2}
+      propertyPath: m_Name
+      value: Phone
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d829f8b1e5321409c83cdb0b5bf4087b, type: 2}
   m_IsPrefabParent: 0

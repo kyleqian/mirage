@@ -28,7 +28,8 @@ public class StickyPad : MonoBehaviour {
 //	}
 
 	void Start () {
-		// Get the canvas, then get the text object, then get the text component
+        // Get the canvas, then get the text object, then get the text component
+        random = new System.Random();
 		textBox = getTextboxFromSticky(this.gameObject);
 		whiteboardSize = whiteboard.GetComponent<Renderer> ().bounds.size;
 	}
@@ -69,7 +70,7 @@ public class StickyPad : MonoBehaviour {
 
 
 		// Place the sticky randomly on the whiteboard
-		int randomX = random.Next(-(int)(whiteboardSize.x/2), (int)(whiteboardSize.x/2));
+		int randomX = random.Next(-(int)(whiteboardSize.x/4), (int)(whiteboardSize.x/4));
 		int randomY = random.Next (-(int)(whiteboardSize.y / 2), (int)(whiteboardSize.y / 2));
 
 		// Get the width and height 

@@ -49,7 +49,7 @@ public class Controller : MonoBehaviour
                     objectBeingMoved.GetComponent<StickyNote>().DroppedOff();
 
                     // Drop object HACK HACK
-                    if (hit.point.x < -5 || hit.point.x > 5 ||
+                    if (hit.point.x < -15 || hit.point.x > 15 ||
                        hit.point.y < -5 || hit.point.y > 5)
                     {
 						Destroy(objectBeingMoved);
