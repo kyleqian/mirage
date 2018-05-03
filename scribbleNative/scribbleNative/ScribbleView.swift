@@ -13,8 +13,6 @@ class ScribbleView: UIView {
     weak var delegate: NetworkDelegate?
     
     var isDrawing = false
-    var isDoubleTouching = false
-    var isTripleTouching = false
     var lastPoint: CGPoint!
     var strokeColor: CGColor = UIColor.black.cgColor
     var strokes = [Stroke]()
@@ -34,23 +32,19 @@ class ScribbleView: UIView {
     var timer: Timer? = nil;
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // TODO
+        guard (event?.allTouches?.count)! <= 1 else {
+            erase()
+            resetTrace()
+            isDrawing = false
+            return
+        }
+        
         guard !isDrawing else { return }
         isDrawing = true
 
         // Hmm, why are both this and the prev check necessary?
         guard let touch = touches.first else { return }
-        
-        // Hacky multi-touch handler
-        if touches.count > 1 {
-            guard !(isDoubleTouching || isTripleTouching) else { return }
-            isDrawing = false
-            if touches.count == 2{
-                isDoubleTouching = true
-            } else {
-                isTripleTouching = true
-            }
-            return
-        }
         
         let currentPoint = touch.location(in: self)
         lastPoint = currentPoint
@@ -62,6 +56,9 @@ class ScribbleView: UIView {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // TODO
+        guard (event?.allTouches?.count)! <= 1 else { return }
+        
         guard isDrawing else { return }
         guard let touch = touches.first else { return }
         let currentPoint = touch.location(in: self)
@@ -75,17 +72,17 @@ class ScribbleView: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // Hacky
-        if isDoubleTouching || isTripleTouching {
-            if isDoubleTouching {
-                self.delegate?.sendText(text: "SEND_SPACE")
-            } else if isTripleTouching {
-                self.delegate?.sendText(text: "SEND_MULTI_SWIPE")
+        // TODO
+        if !isDrawing {
+            let numTouchesBeforeLift = (event?.allTouches?.count)!
+            let numTouchesLifted = touches.count
+            if numTouchesBeforeLift > 1 {
+                if numTouchesBeforeLift == 2 && numTouchesLifted > 1 {
+                    self.delegate?.sendText(text: "SEND_SPACE")
+                } else if numTouchesBeforeLift > 2 && numTouchesLifted > 1 {
+                    self.delegate?.sendText(text: "SEND_MULTI_SWIPE")
+                }
             }
-            
-            isDoubleTouching = false
-            isTripleTouching = false
-            return
         }
         
         guard isDrawing else { return }
