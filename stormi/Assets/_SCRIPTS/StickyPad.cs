@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -8,13 +9,15 @@ public class StickyPad : MonoBehaviour {
 //	public enum StickyPadState { DELETE, ADD_STICKY, WRITE };
 //	public StickyPadState state;
 	public GameObject NewStickyPrefab;
-	Text textBox;
+	public GameObject whiteboard;
 
 	// source of truth for current text
 	private string currentText;
-
+	private Text textBox;
 	// janky because we're mixing state with events
-	bool shouldAddSticky = false;
+	private bool shouldAddSticky = false;
+	private System.Random random;
+	private Vector3 whiteboardSize;
 
 //	void OnEnable() {
 //
@@ -27,6 +30,7 @@ public class StickyPad : MonoBehaviour {
 	void Start () {
 		// Get the canvas, then get the text object, then get the text component
 		textBox = getTextboxFromSticky(this.gameObject);
+		whiteboardSize = whiteboard.GetComponent<Renderer> ().bounds.size;
 	}
 	
 	// Update is called once per frame
@@ -58,22 +62,33 @@ public class StickyPad : MonoBehaviour {
 
 	private void addSticky() {
 		// Get the current pointing location to board
-		RaycastHit hit;
+//		RaycastHit hit;
 
-		if (Physics.Raycast (transform.position, transform.forward, out hit, Mathf.Infinity)) {
-			if (hit.transform.tag == "Board") {
-				// Instantiate new sticky prefab on the board with the text
-				GameObject newSticky = Instantiate(NewStickyPrefab,
-					hit.point,
-					Quaternion.identity) as GameObject;
+//		if (Physics.Raycast (transform.position, transform.forward, out hit, Mathf.Infinity)) {
+//			if (hit.transform.tag == "Board") {
 
-				// Transfer text to that sticky
-				getTextboxFromSticky(newSticky).text = currentText;
 
-				// Reset the current sticky pad text
-				wipeStickyPad();
-			}
-		}
+		// Place the sticky randomly on the whiteboard
+		int randomX = random.Next(-(int)(whiteboardSize.x/2), (int)(whiteboardSize.x/2));
+		int randomY = random.Next (-(int)(whiteboardSize.y / 2), (int)(whiteboardSize.y / 2));
+
+		// Get the width and height 
+		Vector3 randPosition = new Vector3(whiteboard.transform.position.x + randomX, 
+			whiteboard.transform.position.y + randomY, 
+			whiteboard.transform.position.z);
+
+		// Instantiate new sticky prefab on the board with the text
+		GameObject newSticky = Instantiate(NewStickyPrefab,
+			randPosition,
+			Quaternion.identity) as GameObject;
+
+		// Transfer text to that sticky
+		getTextboxFromSticky(newSticky).text = currentText;
+
+		// Reset the current sticky pad text
+		wipeStickyPad();
+//			}
+//		}
 	}
 
 	public void toggleAddSticky() {
