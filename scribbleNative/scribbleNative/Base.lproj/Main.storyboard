@@ -17,10 +17,19 @@
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="9e7-4W-xeA" customClass="ScribbleView" customModule="scribbleNative" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hgh-yb-p8d" userLabel="Portrait View" customClass="PortraitView" customModule="scribbleNative" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="m1H-0N-8yv"/>
                     </view>
                     <connections>
+                        <outlet property="PortraitView" destination="hgh-yb-p8d" id="eUg-va-Utn"/>
+                        <outlet property="portraitView" destination="hgh-yb-p8d" id="GGx-2K-hr8"/>
                         <outlet property="scribbleView" destination="9e7-4W-xeA" id="maM-nP-F8t"/>
                     </connections>
                 </viewController>

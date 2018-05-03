@@ -13,6 +13,8 @@ import JPSVolumeButtonHandler
 
 class ViewController: UIViewController, NetworkDelegate {
     @IBOutlet var scribbleView: ScribbleView!
+    @IBOutlet weak var portraitView: PortraitView!
+    
     
     var motionManager = CMMotionManager()
     var volumeButtonHandler: JPSVolumeButtonHandler?
@@ -21,7 +23,9 @@ class ViewController: UIViewController, NetworkDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         scribbleView.delegate = self
+        portraitView.delegate = self
         
         rotationSocket.connect()
         inputSocket.connect()
@@ -50,8 +54,10 @@ class ViewController: UIViewController, NetworkDelegate {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
+            self.portraitView.isHidden = true
             self.sendText(text: "ORIENTATION_LANDSCAPE")
         } else {
+            self.portraitView.isHidden = false
             self.sendText(text: "ORIENTATION_PORTRAIT")
         }
     }

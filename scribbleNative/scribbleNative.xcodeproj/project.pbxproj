@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27275814208F08E400DECFF2 /* NetworkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27275813208F08E400DECFF2 /* NetworkDelegate.swift */; };
+		27945CE4209AD26C008FFAF8 /* PortraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27945CE3209AD26C008FFAF8 /* PortraitView.swift */; };
 		27CBD59D208ABC5D000B3F01 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CBD59C208ABC5C000B3F01 /* CoreMotion.framework */; };
 		520ED4FC208EEC14007C53B5 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520ED4FB208EEC14007C53B5 /* Path.swift */; };
 		52BA0674208ACB1000414912 /* RecognitionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BA0673208ACB1000414912 /* RecognitionAPI.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		27275813208F08E400DECFF2 /* NetworkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDelegate.swift; sourceTree = "<group>"; };
+		27945CE3209AD26C008FFAF8 /* PortraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitView.swift; sourceTree = "<group>"; };
 		27CBD59C208ABC5C000B3F01 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		520ED4FB208EEC14007C53B5 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		52BA0673208ACB1000414912 /* RecognitionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionAPI.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				AAEF40BA207AAEB000E0C644 /* ScribbleView.swift */,
 				27275813208F08E400DECFF2 /* NetworkDelegate.swift */,
 				AA9D1EE9207A9DEE005AA382 /* Main.storyboard */,
+				27945CE3209AD26C008FFAF8 /* PortraitView.swift */,
 				AA9D1EEC207A9DEF005AA382 /* Assets.xcassets */,
 				AA9D1EEE207A9DEF005AA382 /* LaunchScreen.storyboard */,
 				AA9D1EF1207A9DEF005AA382 /* Info.plist */,
@@ -351,6 +354,7 @@
 				AA9D1EE6207A9DEE005AA382 /* AppDelegate.swift in Sources */,
 				AAEF40BB207AAEB000E0C644 /* ScribbleView.swift in Sources */,
 				520ED4FC208EEC14007C53B5 /* Path.swift in Sources */,
+				27945CE4209AD26C008FFAF8 /* PortraitView.swift in Sources */,
 				27275814208F08E400DECFF2 /* NetworkDelegate.swift in Sources */,
 				AAEF40BF207AAF7C00E0C644 /* Stroke.swift in Sources */,
 			);
