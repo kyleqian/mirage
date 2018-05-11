@@ -2,14 +2,11 @@
 
 public class StickyNote : MonoBehaviour
 {
-    public bool grabbed;
-
-    Transform initParent;
-    Quaternion boardRotation = Quaternion.Euler(0, 0, 0); // Identity?
+    Collider collider;
 
     void Start()
     {
-        initParent = transform.parent;
+        collider = GetComponent<Collider>();
     }
 
     void Update()
@@ -19,19 +16,17 @@ public class StickyNote : MonoBehaviour
 
     public void PickedUpBy(Transform picker)
     {
-        //transform.parent = picker;
-        GetComponent<Collider>().enabled = false;
+        collider.enabled = false;
     }
 
     public void DroppedOff()
     {
-        //transform.parent = initParent;
-        GetComponent<Collider>().enabled = true;
+        collider.enabled = true;
     }
 
-    public void MoveToRaycast(Vector3 point)
+    public void MoveToRaycast(RaycastHit hit)
     {
-        transform.position = point;
-        transform.rotation = boardRotation;
+        transform.position = hit.point;
+        transform.rotation = hit.transform.rotation;
     }
 }

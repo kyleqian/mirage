@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Sticky
   - Board
+  - Boundary
   layers:
   - Default
   - TransparentFX
