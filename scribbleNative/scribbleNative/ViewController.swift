@@ -18,11 +18,13 @@ class ViewController: UIViewController, NetworkDelegate {
     
     var motionManager = CMMotionManager()
     var volumeButtonHandler: JPSVolumeButtonHandler?
-    var rotationSocket = WebSocket(url: URL(string: "ws://10.0.1.170:9001/M_Rotation")!)
-    var inputSocket = WebSocket(url: URL(string: "ws://10.0.1.170:9001/M_Input")!)
+    var rotationSocket = WebSocket(url: URL(string: "ws://10.1.10.190:9001/M_Rotation")!)
+    var inputSocket = WebSocket(url: URL(string: "ws://10.1.10.190:9001/M_Input")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setNeedsUpdateOfScreenEdgesDeferringSystemGestures()
         
         scribbleView.delegate = self
         portraitView.delegate = self
@@ -65,5 +67,9 @@ class ViewController: UIViewController, NetworkDelegate {
     func sendText(text: String) {
         print(text)
         self.inputSocket.write(string: text)
+    }
+    
+    override func preferredScreenEdgesDeferringSystemGestures() -> UIRectEdge {
+        return [.bottom,.top]
     }
 }

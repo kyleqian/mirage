@@ -60,10 +60,7 @@ public class Controller : MonoBehaviour
                     return;
                 }
 
-                if (hit.transform.tag == "Board")
-                {
-                    objectBeingMoved.GetComponent<StickyNote>().MoveToRaycast(hit.point);
-                }
+                objectBeingMoved.GetComponent<StickyNote>().MoveToRaycast(hit.point);
                 return;
             }
 
