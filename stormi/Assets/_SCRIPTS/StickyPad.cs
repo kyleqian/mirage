@@ -70,13 +70,13 @@ public class StickyPad : MonoBehaviour {
 
 
 		// Place the sticky randomly on the whiteboard
-		int randomX = random.Next(-(int)(whiteboardSize.x/4), (int)(whiteboardSize.x/4));
-		int randomY = random.Next (-(int)(whiteboardSize.y / 2), (int)(whiteboardSize.y / 2));
+		int randomX = random.Next(-(int)(whiteboardSize.x / 4), (int)(whiteboardSize.x / 4));
+		int randomY = random.Next(-(int)(whiteboardSize.y / 2), (int)(whiteboardSize.y / 2));
 
 		// Get the width and height 
 		Vector3 randPosition = new Vector3(whiteboard.transform.position.x + randomX, 
 			whiteboard.transform.position.y + randomY, 
-			whiteboard.transform.position.z);
+			whiteboard.transform.position.z - 0.05f);
 
 		// Instantiate new sticky prefab on the board with the text
 		GameObject newSticky = Instantiate(NewStickyPrefab,
