@@ -24,6 +24,8 @@ class ViewController: UIViewController, NetworkDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNeedsUpdateOfScreenEdgesDeferringSystemGestures()
+        
         scribbleView.delegate = self
         portraitView.delegate = self
         
@@ -65,5 +67,9 @@ class ViewController: UIViewController, NetworkDelegate {
     func sendText(text: String) {
         print(text)
         self.inputSocket.write(string: text)
+    }
+    
+    override func preferredScreenEdgesDeferringSystemGestures() -> UIRectEdge {
+        return [.bottom,.top]
     }
 }
