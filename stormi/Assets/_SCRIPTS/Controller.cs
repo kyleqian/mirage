@@ -36,7 +36,7 @@ public class Controller : MonoBehaviour
         {
             lineRenderer.enabled = true;
             lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, hit.point + (hit.point - transform.position) * 100);
+            lineRenderer.SetPosition(1, hit.point);
             //Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
 
             // Highlight stuff
