@@ -73,6 +73,9 @@ public class Phone : MonoBehaviour
 			case MULTISWIPE:
 				stickyPad.toggleAddSticky ();
 				break;
+            case UP_PRESS:
+                // Nothing on Unity side for now
+                break;
 			case DOWN_PRESS:
 				stickyPad.deleteLastWord ();
 				break;
