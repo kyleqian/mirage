@@ -18,8 +18,8 @@ class ViewController: UIViewController, NetworkDelegate {
     
     var motionManager = CMMotionManager()
     var volumeButtonHandler: JPSVolumeButtonHandler?
-    var rotationSocket = WebSocket(url: URL(string: "ws://10.1.10.190:9001/M_Rotation")!)
-    var inputSocket = WebSocket(url: URL(string: "ws://10.1.10.190:9001/M_Input")!)
+    var rotationSocket = WebSocket(url: URL(string: "ws://10.0.1.134:9001/M_Rotation")!)
+    var inputSocket = WebSocket(url: URL(string: "ws://10.0.1.134:9001/M_Input")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +29,12 @@ class ViewController: UIViewController, NetworkDelegate {
         scribbleView.delegate = self
         portraitView.delegate = self
         
-        rotationSocket.connect()
-        inputSocket.connect()
-        
-        motionManager.startDeviceMotionUpdates(to: OperationQueue.current!, withHandler: {
-            (deviceMotion: CMDeviceMotion?, error: Error?) -> Void in
-            self.rotationSocket.write(string: "\(deviceMotion!.attitude.pitch);\(deviceMotion!.attitude.yaw);\(deviceMotion!.attitude.roll)")
-        })
-        
         let upBlock = { () -> Void in
             self.sendText(text: "UP_PRESS")
+            
+            if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+                self.resetConnection()
+            }
         }
         
         let downBlock = { () -> Void in
@@ -47,6 +43,25 @@ class ViewController: UIViewController, NetworkDelegate {
         
         volumeButtonHandler = JPSVolumeButtonHandler(up: upBlock, downBlock: downBlock)
         volumeButtonHandler?.start(true)
+        
+        resetConnection()
+    }
+    
+    func resetConnection() {
+        rotationSocket.disconnect()
+        inputSocket.disconnect()
+        motionManager.stopDeviceMotionUpdates()
+
+        // The hackiest of them all
+        usleep(250000)
+        
+        rotationSocket.connect()
+        inputSocket.connect()
+
+        motionManager.startDeviceMotionUpdates(to: OperationQueue.current!, withHandler: {
+            (deviceMotion: CMDeviceMotion?, error: Error?) -> Void in
+            self.rotationSocket.write(string: "\(deviceMotion!.attitude.pitch);\(deviceMotion!.attitude.yaw);\(deviceMotion!.attitude.roll)")
+        })
     }
     
     override func didReceiveMemoryWarning() {
