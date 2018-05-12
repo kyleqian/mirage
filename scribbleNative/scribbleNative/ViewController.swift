@@ -30,7 +30,10 @@ class ViewController: UIViewController, NetworkDelegate {
         
         let upBlock = { () -> Void in
             self.sendText(text: "UP_PRESS")
-            self.resetConnection()
+            
+            if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+                self.resetConnection()
+            }
         }
         
         let downBlock = { () -> Void in
