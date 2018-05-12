@@ -10,11 +10,11 @@ import UIKit
 import CoreMotion
 import Starscream
 import JPSVolumeButtonHandler
+import SwiftyJSON
 
 class ViewController: UIViewController, NetworkDelegate {
     @IBOutlet var scribbleView: ScribbleView!
     @IBOutlet weak var portraitView: PortraitView!
-    
     
     var motionManager = CMMotionManager()
     var volumeButtonHandler: JPSVolumeButtonHandler?
@@ -65,8 +65,18 @@ class ViewController: UIViewController, NetworkDelegate {
     }
     
     func sendText(text: String) {
-        print(text)
+        #if DEBUG
+            print(text)
+        #endif
         self.inputSocket.write(string: text)
+    }
+    
+    func sendStrokes(trace: [[[Float]]]) {
+        do {
+          try self.inputSocket.write(data: JSON(trace).rawData())
+        } catch {
+            print("Error \(error)")
+        }
     }
     
     override func preferredScreenEdgesDeferringSystemGestures() -> UIRectEdge {

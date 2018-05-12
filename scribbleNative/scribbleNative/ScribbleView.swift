@@ -81,6 +81,9 @@ class ScribbleView: UIView {
         
         lastPoint = currentPoint
         setNeedsDisplay()
+        
+        // Send the strokes to Stormi
+        delegate?.sendStrokes(strokes: strokes)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

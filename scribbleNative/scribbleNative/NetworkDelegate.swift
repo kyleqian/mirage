@@ -10,4 +10,5 @@ import Foundation
 
 protocol NetworkDelegate: class {
     func sendText(text: String)
+    func sendStrokes(trace : [[[Float]]])
 }
