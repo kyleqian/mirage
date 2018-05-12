@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 
-public class Phone : MonoBehaviour
+public class Phone : NetworkBehaviour
 {
     public enum PhoneState { Controller, Sticky };
 
     public PhoneState state;
 	public StickyPad stickyPad;
 	public Controller controller;
+    public GameObject NewStickyPrefab;
 
 	const string UP_PRESS = "UP_PRESS";
 	const string SPACE = "SEND_SPACE";
@@ -17,25 +20,35 @@ public class Phone : MonoBehaviour
     const string PORTRAIT_TOUCH_BEGAN = "PORTRAIT_TOUCH_BEGAN";
     const string PORTRAIT_TOUCH_ENDED = "PORTRAIT_TOUCH_ENDED";
 
-	void OnEnable()
-	{
-		SocketHost.ReceivedMessage += OnReceivedMessage;
-    }
+	// void OnEnable()
+	// {
+    //     SocketHost.ReceivedMessage += OnReceivedMessage;
+    // }
 
-	void OnDisable()
-	{
-        SocketHost.ReceivedMessage -= OnReceivedMessage;
-	}
+	// void OnDisable()
+	// {
+    //     SocketHost.ReceivedMessage -= OnReceivedMessage;
+	// }
 
 	void Start()
     {
 		state = PhoneState.Controller;
+
+        if (isLocalPlayer)
+        {
+            // DOES NOT HAVE CORRESPONDING REMOVE LISTENER RIGHT NOW
+            SocketHost.ReceivedMessage += OnReceivedMessage;
+        }
     }
     
     void Update()
     {
         UpdateVisibility();
-        UpdatePose();
+
+        if (isLocalPlayer)
+        {
+            UpdatePose();
+        }
 	}
 
     void OnReceivedMessage(string message)
@@ -96,5 +109,40 @@ public class Phone : MonoBehaviour
     {
         controller.gameObject.SetActive(state == PhoneState.Controller);
         stickyPad.gameObject.SetActive(state == PhoneState.Sticky);
+    }
+
+    public void SpawnSticky(Vector3 position, string text)
+    {
+        if (isLocalPlayer)
+        {
+            CmdSpawnSticky(position, text);
+        }
+    }
+
+    public void DestroySticky(GameObject sticky)
+    {
+        if (isLocalPlayer)
+        {
+            CmdDestroySticky(sticky);
+        }
+    }
+
+    [Command]
+    void CmdSpawnSticky(Vector3 position, string text)
+    {
+        GameObject newSticky = Instantiate(NewStickyPrefab,
+			position,
+			Quaternion.identity) as GameObject;
+
+		// Transfer text to that sticky
+		newSticky.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = text;
+        
+        NetworkServer.SpawnWithClientAuthority(newSticky, connectionToClient);
+    }
+
+    [Command]
+    void CmdDestroySticky(GameObject sticky)
+    {
+        NetworkServer.Destroy(sticky);
     }
 }

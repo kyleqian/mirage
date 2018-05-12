@@ -40,6 +40,8 @@ GameObject:
   - component: {fileID: 65080558419288944}
   - component: {fileID: 23046747602112424}
   - component: {fileID: 114787827218398578}
+  - component: {fileID: 114008275329236744}
+  - component: {fileID: 114554660695126552}
   m_Layer: 0
   m_Name: Sticky
   m_TagString: Sticky
@@ -132,6 +134,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114008275329236744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805458278246826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 136
+    i1: 93
+    i2: 169
+    i3: 89
+    i4: 253
+    i5: 69
+    i6: 132
+    i7: 130
+    i8: 153
+    i9: 237
+    i10: 154
+    i11: 49
+    i12: 240
+    i13: 215
+    i14: 23
+    i15: 28
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114149681721024932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,6 +203,27 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114554660695126552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805458278246826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114787827218398578
 MonoBehaviour:
   m_ObjectHideFlags: 1

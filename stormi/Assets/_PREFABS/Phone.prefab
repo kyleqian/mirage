@@ -91,6 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4210837580040192}
   - component: {fileID: 114323403868743900}
+  - component: {fileID: 114681345007937596}
+  - component: {fileID: 114706259678231332}
   m_Layer: 0
   m_Name: Phone
   m_TagString: Untagged
@@ -310,6 +312,8 @@ MonoBehaviour:
   state: 0
   stickyPad: {fileID: 114145391608786654}
   controller: {fileID: 114906827338632564}
+  NewStickyPrefab: {fileID: 1805458278246826, guid: 885da959fd45848299ed9a31f0d7171c,
+    type: 2}
 --- !u!114 &114476152465714642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -364,6 +368,59 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Hey It's Me
+--- !u!114 &114681345007937596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1563665872250200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 216
+    i1: 41
+    i2: 248
+    i3: 177
+    i4: 229
+    i5: 50
+    i6: 20
+    i7: 9
+    i8: 200
+    i9: 60
+    i10: 219
+    i11: 11
+    i12: 91
+    i13: 244
+    i14: 8
+    i15: 123
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
+--- !u!114 &114706259678231332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1563665872250200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114906827338632564
 MonoBehaviour:
   m_ObjectHideFlags: 1

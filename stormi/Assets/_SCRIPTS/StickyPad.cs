@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class StickyPad : MonoBehaviour {
 
@@ -78,13 +79,16 @@ public class StickyPad : MonoBehaviour {
 			whiteboard.transform.position.y + randomY, 
 			whiteboard.transform.position.z - 0.05f);
 
-		// Instantiate new sticky prefab on the board with the text
-		GameObject newSticky = Instantiate(NewStickyPrefab,
-			randPosition,
-			Quaternion.identity) as GameObject;
+		// // Instantiate new sticky prefab on the board with the text
+		// GameObject newSticky = Instantiate(NewStickyPrefab,
+		// 	randPosition,
+		// 	Quaternion.identity) as GameObject;
 
-		// Transfer text to that sticky
-		getTextboxFromSticky(newSticky).text = currentText;
+		// // Transfer text to that sticky
+		// getTextboxFromSticky(newSticky).text = currentText;
+
+		// TODO: Multi
+		transform.parent.GetComponent<Phone>().SpawnSticky(randPosition, currentText);
 
 		// Reset the current sticky pad text
 		wipeStickyPad();

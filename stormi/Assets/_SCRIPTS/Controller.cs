@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
 public class Controller : MonoBehaviour
 {
@@ -18,15 +19,22 @@ public class Controller : MonoBehaviour
 
 	void Start()
 	{
-        lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.positionCount = 2;
+        if (transform.parent.GetComponent<NetworkIdentity>().isLocalPlayer)
+        {
+            lineRenderer = GetComponent<LineRenderer>();
+            lineRenderer.positionCount = 2;
+        }
 	}
 
 	void Update()
     {
-        PerformRaycast();
-        inputDown = false;
-        inputUp = false;
+        // TODO: CLEANUP
+        if (transform.parent.GetComponent<NetworkIdentity>().isLocalPlayer)
+        {
+            PerformRaycast();
+            inputDown = false;
+            inputUp = false;
+        }
 	}
 
     void PerformRaycast()
@@ -51,7 +59,8 @@ public class Controller : MonoBehaviour
                     // Drop object HACK HACK
                     if (hit.transform.tag == "Boundary")
                     {
-						Destroy(objectBeingMoved);
+						// Destroy(objectBeingMoved);
+                        transform.parent.GetComponent<Phone>().DestroySticky(objectBeingMoved);
                     }
 
 					objectBeingMoved = null;
