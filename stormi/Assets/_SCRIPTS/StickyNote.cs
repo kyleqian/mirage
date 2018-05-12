@@ -27,7 +27,6 @@ public class StickyNote : MonoBehaviour
     public void MoveToRaycast(RaycastHit hit)
     {
         transform.position = hit.point;
-        // transform.rotation = hit.transform.rotation;
         transform.LookAt(hit.point - Vector3.Normalize(hit.normal), Vector3.up);
     }
 }
