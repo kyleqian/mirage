@@ -18,8 +18,8 @@ class ViewController: UIViewController, NetworkDelegate {
     
     var motionManager = CMMotionManager()
     var volumeButtonHandler: JPSVolumeButtonHandler?
-    var rotationSocket = WebSocket(url: URL(string: "ws://10.1.10.179:9001/M_Rotation")!)
-    var inputSocket = WebSocket(url: URL(string: "ws://10.1.10.179:9001/M_Input")!)
+    var rotationSocket = WebSocket(url: URL(string: "ws://10.0.1.146:9001/M_Rotation")!)
+    var inputSocket = WebSocket(url: URL(string: "ws://10.0.1.146:9001/M_Input")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,11 +87,11 @@ class ViewController: UIViewController, NetworkDelegate {
     }
     
     func sendTrace(trace: [[[Float]]]) {
-//        do {
-//          try self.inputSocket.write(data: JSON(trace).rawData())
-//        } catch {
-//            print("Error \(error)")
-//        }
+        do {
+          try self.inputSocket.write(data: JSON(trace).rawData())
+        } catch {
+            print("Error \(error)")
+        }
     }
     
     override func preferredScreenEdgesDeferringSystemGestures() -> UIRectEdge {

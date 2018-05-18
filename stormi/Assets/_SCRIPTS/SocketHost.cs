@@ -19,6 +19,7 @@ public class M_Input : WebSocketBehavior
     protected override void OnMessage(MessageEventArgs e)
     {
         SocketHost.instance.curText = e.Data;
+		Debug.Log (e.Data);
 
         SocketHost.InvokeReceivedMessage(e.Data);
     }
