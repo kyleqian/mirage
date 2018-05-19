@@ -13,6 +13,7 @@ import JPSVolumeButtonHandler
 import SwiftyJSON
 
 class ViewController: UIViewController, NetworkDelegate {
+    
     @IBOutlet var scribbleView: ScribbleView!
     @IBOutlet weak var portraitView: PortraitView!
     
@@ -72,26 +73,27 @@ class ViewController: UIViewController, NetworkDelegate {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
             self.portraitView.isHidden = true
-            self.sendText(text: "ORIENTATION_LANDSCAPE")
+            self.sendJSON(json: JSON(JSON_CONSTANTS.ORIENTATION_LANDSCAPE))
         } else {
             self.portraitView.isHidden = false
-            self.sendText(text: "ORIENTATION_PORTRAIT")
+            self.sendJSON(json: JSON(JSON_CONSTANTS.ORIENTATION_PORTRAIT))
         }
     }
     
     func sendText(text: String) {
-        #if DEBUG
-            print(text)
-        #endif
-        self.inputSocket.write(string: text)
+        var textJSONified = JSON_CONSTANTS.SEND_TEXT
+        textJSONified["text"] = text
+        
+        print(textJSONified)
+        
+        sendJSON(json: JSON(textJSONified))
     }
     
-    func sendTrace(trace: [[[Float]]]) {
-        do {
-          try self.inputSocket.write(data: JSON(trace).rawData())
-        } catch {
-            print("Error \(error)")
-        }
+    func sendStrokes(strokes: [[[Float]]]) {
+        var strokesJSONified = JSON_CONSTANTS.SEND_STROKES
+        strokesJSONified["strokes"] = JSON(strokes).rawString()
+        
+        sendJSON(json: JSON(strokesJSONified))
     }
     
     func sendJSON(json: JSON ) {

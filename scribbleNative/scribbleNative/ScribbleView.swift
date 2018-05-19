@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class ScribbleView: UIView {
     weak var delegate: NetworkDelegate?
@@ -83,7 +84,7 @@ class ScribbleView: UIView {
         setNeedsDisplay()
         
         // Send the strokes to Stormi
-//        delegate?.sendTrace(trace: trace)
+        delegate?.sendStrokes(strokes: trace)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -92,9 +93,9 @@ class ScribbleView: UIView {
             let numTouchesRemaining = (event?.allTouches?.count)! - touches.count
             if numTouchesRemaining == 0 {
                 if isDoubleTouching {
-                    self.delegate?.sendJSON(json: JSON_CONSTANTS.SEND_SPACE)
+                    self.delegate?.sendJSON(json: JSON(JSON_CONSTANTS.SEND_SPACE))
                 } else if isMultiTouching {
-                    self.delegate?.sendText(text: "SEND_MULTI_SWIPE")
+                    self.delegate?.sendJSON(json: JSON(JSON_CONSTANTS.SEND_MULTI_SWIPE))
                 }
                 
                 isDoubleTouching = false

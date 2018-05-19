@@ -7,9 +7,13 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 struct JSON_CONSTANTS {
-    static let SEND_SPACE = JSON(["type": "SEND_SPACE"])
+    static let SEND_SPACE = ["type": "SEND_SPACE"]
+    static let SEND_MULTI_SWIPE = ["type": "SEND_MULTI_SWIPE"]
+    static let SEND_TEXT = ["type": "SEND_TEXT"]
+    static let SEND_STROKES = ["type": "SEND_STROKES"]
+    static let ORIENTATION_LANDSCAPE = ["type": "ORIENTATION_LANDSCAPE"]
+    static let ORIENTATION_PORTRAIT = ["type": "ORIENTATION_PORTRAIT"]    
 }
 
