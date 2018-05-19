@@ -94,6 +94,10 @@ class ViewController: UIViewController, NetworkDelegate {
         }
     }
     
+    func sendJSON(json: JSON ) {
+        self.inputSocket.write(string: json.rawString()!)
+    }
+    
     override func preferredScreenEdgesDeferringSystemGestures() -> UIRectEdge {
         return [.bottom,.top]
     }

@@ -92,7 +92,7 @@ class ScribbleView: UIView {
             let numTouchesRemaining = (event?.allTouches?.count)! - touches.count
             if numTouchesRemaining == 0 {
                 if isDoubleTouching {
-                    self.delegate?.sendText(text: "SEND_SPACE")
+                    self.delegate?.sendJSON(json: JSON_CONSTANTS.SEND_SPACE)
                 } else if isMultiTouching {
                     self.delegate?.sendText(text: "SEND_MULTI_SWIPE")
                 }

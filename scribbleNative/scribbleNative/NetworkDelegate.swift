@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 protocol NetworkDelegate: class {
     func sendText(text: String)
     func sendTrace(trace : [[[Float]]])
+    func sendJSON(json : JSON)
 }
