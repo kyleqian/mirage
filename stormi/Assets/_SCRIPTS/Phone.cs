@@ -11,6 +11,8 @@ public class Phone : MonoBehaviour
 	const string UP_PRESS = "UP_PRESS";
 	const string SPACE = "SEND_SPACE";
 	const string MULTISWIPE = "SEND_MULTI_SWIPE";
+	const string TEXT = "SEND_TEXT";
+	const string STROKES = "SEND_STROKES";
 	const string DOWN_PRESS = "DOWN_PRESS";
     const string ORIENTATION_LANDSCAPE = "ORIENTATION_LANDSCAPE";
     const string ORIENTATION_PORTRAIT = "ORIENTATION_PORTRAIT";
@@ -38,14 +40,15 @@ public class Phone : MonoBehaviour
         UpdatePose();
 	}
 
-    void OnReceivedMessage(string message)
+	void OnReceivedMessage(JSONData data)
     {
-        if (message == ORIENTATION_PORTRAIT)
+		if (data.type == ORIENTATION_PORTRAIT)
         {
             state = PhoneState.Controller;
             return;
         }
-        else if (message == ORIENTATION_LANDSCAPE)
+
+		else if (data.type == ORIENTATION_LANDSCAPE)
         {
             state = PhoneState.Sticky;
             return;
@@ -53,7 +56,7 @@ public class Phone : MonoBehaviour
 
 		if (state == PhoneState.Controller)
         {
-			switch (message)
+			switch (data.type)
 			{
                 case PORTRAIT_TOUCH_BEGAN:
                     controller.inputDown = true;
@@ -65,7 +68,7 @@ public class Phone : MonoBehaviour
         }
         else if (state == PhoneState.Sticky)
         {
-			switch (message)
+			switch (data.type)
 			{
 			case SPACE:
 				stickyPad.addSpace ();
@@ -79,9 +82,11 @@ public class Phone : MonoBehaviour
 			case DOWN_PRESS:
 				stickyPad.deleteLastWord ();
 				break;
-			default:
-				stickyPad.write (message);
+			case TEXT:
+				stickyPad.write (data.text);
 				// Received text
+				break;
+			case STROKES:
 				break;
 			}
 		}

@@ -6,6 +6,13 @@ using UnityEngine;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 
+[Serializable]
+public class JSONData {
+	public string type;
+	public string text;
+	public string strokes;
+}
+
 public class M_Rotation : WebSocketBehavior
 {
     protected override void OnMessage(MessageEventArgs e)
@@ -23,7 +30,7 @@ public class M_Input : WebSocketBehavior
     {
         SocketHost.instance.curText = e.Data;
 
-        SocketHost.InvokeReceivedMessage(e.Data);
+		SocketHost.InvokeReceivedMessage(JsonUtility.FromJson<JSONData>(e.Data));
     }
 }
 
@@ -35,7 +42,7 @@ public class SocketHost : MonoBehaviour
     public float roll;
     public string curText;
 
-    public delegate void OnReceivedMessage(string message);
+	public delegate void OnReceivedMessage(JSONData data);
     public static event OnReceivedMessage ReceivedMessage;
 
     WebSocketServer wssv;
@@ -87,11 +94,11 @@ public class SocketHost : MonoBehaviour
 		}
     }
 
-    public static void InvokeReceivedMessage(string message)
+	public static void InvokeReceivedMessage(JSONData data)
     {
         if (ReceivedMessage!= null)
         {
-			ReceivedMessage(message);
+			ReceivedMessage(data);
         }
     }
 }
