@@ -11,6 +11,7 @@
 		27945CE4209AD26C008FFAF8 /* PortraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27945CE3209AD26C008FFAF8 /* PortraitView.swift */; };
 		27CBD59D208ABC5D000B3F01 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CBD59C208ABC5C000B3F01 /* CoreMotion.framework */; };
 		520ED4FC208EEC14007C53B5 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520ED4FB208EEC14007C53B5 /* Path.swift */; };
+		52882C8720AFA1BE0040A80C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52882C8620AFA1BE0040A80C /* Constants.swift */; };
 		52BA0674208ACB1000414912 /* RecognitionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BA0673208ACB1000414912 /* RecognitionAPI.swift */; };
 		AA9D1EE6207A9DEE005AA382 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D1EE5207A9DEE005AA382 /* AppDelegate.swift */; };
 		AA9D1EE8207A9DEE005AA382 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D1EE7207A9DEE005AA382 /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 		27945CE3209AD26C008FFAF8 /* PortraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitView.swift; sourceTree = "<group>"; };
 		27CBD59C208ABC5C000B3F01 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		520ED4FB208EEC14007C53B5 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
+		52882C8620AFA1BE0040A80C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		52BA0673208ACB1000414912 /* RecognitionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionAPI.swift; sourceTree = "<group>"; };
 		8BC13FD7BFB5BCB35C03DF65 /* Pods_scribbleNative.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_scribbleNative.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9D1EE2207A9DEE005AA382 /* scribbleNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scribbleNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +151,7 @@
 				AA9D1EF1207A9DEF005AA382 /* Info.plist */,
 				52BA0673208ACB1000414912 /* RecognitionAPI.swift */,
 				520ED4FB208EEC14007C53B5 /* Path.swift */,
+				52882C8620AFA1BE0040A80C /* Constants.swift */,
 			);
 			path = scribbleNative;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				27945CE4209AD26C008FFAF8 /* PortraitView.swift in Sources */,
 				27275814208F08E400DECFF2 /* NetworkDelegate.swift in Sources */,
 				AAEF40BF207AAF7C00E0C644 /* Stroke.swift in Sources */,
+				52882C8720AFA1BE0040A80C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
