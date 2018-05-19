@@ -7,4 +7,5 @@ target 'scribbleNative' do
 	pod 'JPSVolumeButtonHandler'
     	pod 'Alamofire', '~> 4.7'
     	pod 'SwiftyJSON', '~> 4.0'
+	pod 'CocoaAsyncSocket'
 end

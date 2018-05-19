@@ -11,15 +11,20 @@ import CoreMotion
 import Starscream
 import JPSVolumeButtonHandler
 import SwiftyJSON
+import CocoaAsyncSocket
 
-class ViewController: UIViewController, NetworkDelegate {
+class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelegate {
     @IBOutlet var scribbleView: ScribbleView!
     @IBOutlet weak var portraitView: PortraitView!
     
     var motionManager = CMMotionManager()
     var volumeButtonHandler: JPSVolumeButtonHandler?
-    var rotationSocket = WebSocket(url: URL(string: "ws://10.0.1.146:9001/M_Rotation")!)
-    var inputSocket = WebSocket(url: URL(string: "ws://10.0.1.146:9001/M_Input")!)
+    var rotationSocket: WebSocket!
+    var inputSocket: WebSocket!
+    
+    // UDP broadcast receiver
+    var broadcastSocket: GCDAsyncUdpSocket!
+    let broadcastPort: UInt16 = 9003
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +33,34 @@ class ViewController: UIViewController, NetworkDelegate {
         
         scribbleView.delegate = self
         portraitView.delegate = self
+        
+        // TODO: Disable functionality before IP address is obtained
+        // Receive IP address
+        receiveBroadcast()
+    }
+    
+    func receiveBroadcast() {
+        broadcastSocket = GCDAsyncUdpSocket(delegate: self, delegateQueue: DispatchQueue.main)
+        
+        do {
+            try broadcastSocket.bind(toPort: broadcastPort)
+            try broadcastSocket.beginReceiving()
+        } catch {
+            print("ReceiveBroadcast error: \(error.localizedDescription).")
+        }
+    }
+    
+    func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
+        // Use IP address to create WebSocket connections
+        initWebsocketConnections(ip: String(data: data, encoding: .utf8)!)
+        
+        // Stop listening to broadcast
+        broadcastSocket.close()
+    }
+    
+    func initWebsocketConnections(ip: String) {
+        rotationSocket = WebSocket(url: URL(string: "ws://\(ip):9001/M_Rotation")!)
+        inputSocket = WebSocket(url: URL(string: "ws://\(ip):9001/M_Input")!)
         
         let upBlock = { () -> Void in
             self.sendText(text: "UP_PRESS")

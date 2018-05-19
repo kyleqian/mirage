@@ -1,11 +1,13 @@
 PODS:
   - Alamofire (4.7.2)
+  - CocoaAsyncSocket (7.6.3)
   - JPSVolumeButtonHandler (1.0.5)
   - Starscream (3.0.5)
   - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - CocoaAsyncSocket
   - JPSVolumeButtonHandler
   - Starscream (~> 3.0.5)
   - SwiftyJSON (~> 4.0)
@@ -13,16 +15,18 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - CocoaAsyncSocket
     - JPSVolumeButtonHandler
     - Starscream
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   JPSVolumeButtonHandler: 53110330c9168ed325def93eabff39f0fe3e8082
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: c9a2ae732b98b503f5578faf99bc72d8cdbc8428
+PODFILE CHECKSUM: f7afba4182ea71dbda791a26d65f7444f33fef87
 
 COCOAPODS: 1.5.0
