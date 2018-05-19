@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
 using UnityEngine;
 using WebSocketSharp;
 using WebSocketSharp.Server;
@@ -37,6 +40,7 @@ public class SocketHost : MonoBehaviour
     public static event OnReceivedMessage ReceivedMessage;
 
     WebSocketServer wssv;
+    UdpClient udpClient;
 
     void Awake()
     {
@@ -57,7 +61,31 @@ public class SocketHost : MonoBehaviour
             IgnoreExtensions = true
         });
 
+        // Listen for connections
         wssv.Start();
+
+        // Find the controller
+        StartBroadcastIp();
+    }
+
+    void StartBroadcastIp()
+	{
+		udpClient = new UdpClient(9002, AddressFamily.InterNetwork);
+		udpClient.Connect(new IPEndPoint(IPAddress.Broadcast, 9003));
+
+        // TODO: Stop broadcasting?
+		InvokeRepeating("BroadcastIp", 0, 0.2f);
+	}
+
+    void BroadcastIp()
+    {
+		string ipAddress = Network.player.ipAddress.ToString();
+
+		if (ipAddress != "")
+        {
+			byte[] b = Encoding.ASCII.GetBytes(ipAddress);
+			udpClient.Send(b, b.Length);
+		}
     }
 
     public static void InvokeReceivedMessage(string message)
