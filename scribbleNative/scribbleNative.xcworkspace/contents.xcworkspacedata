@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:scribbleNative.xcodeproj">
+      location = "group:/Users/kyle/Dropbox/Stanford/MSCS17-18/spring/cs210/Oculus/scribbleNative/scribbleNative.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

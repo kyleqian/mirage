@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27275814208F08E400DECFF2 /* NetworkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27275813208F08E400DECFF2 /* NetworkDelegate.swift */; };
+		2781396920B8EC33000A067A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2781396820B8EC33000A067A /* StoreKit.framework */; };
 		27945CE4209AD26C008FFAF8 /* PortraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27945CE3209AD26C008FFAF8 /* PortraitView.swift */; };
 		27CBD59D208ABC5D000B3F01 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CBD59C208ABC5C000B3F01 /* CoreMotion.framework */; };
 		520ED4FC208EEC14007C53B5 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520ED4FB208EEC14007C53B5 /* Path.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		27275813208F08E400DECFF2 /* NetworkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDelegate.swift; sourceTree = "<group>"; };
 		2781395720B8DBA2000A067A /* scribbleNative.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = scribbleNative.entitlements; sourceTree = "<group>"; };
+		2781396820B8EC33000A067A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		27945CE3209AD26C008FFAF8 /* PortraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitView.swift; sourceTree = "<group>"; };
 		27CBD59C208ABC5C000B3F01 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		520ED4FB208EEC14007C53B5 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2781396920B8EC33000A067A /* StoreKit.framework in Frameworks */,
 				27CBD59D208ABC5D000B3F01 /* CoreMotion.framework in Frameworks */,
 				FD15185B719177748290C375 /* Pods_scribbleNative.framework in Frameworks */,
 			);
@@ -100,6 +103,7 @@
 		39CA9450B30CF21650F590FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2781396820B8EC33000A067A /* StoreKit.framework */,
 				27CBD59C208ABC5C000B3F01 /* CoreMotion.framework */,
 				8BC13FD7BFB5BCB35C03DF65 /* Pods_scribbleNative.framework */,
 			);
@@ -250,8 +254,11 @@
 							com.apple.ApplePay = {
 								enabled = 0;
 							};
-							com.apple.InAppPurchase = {
+							com.apple.GameCenter.iOS = {
 								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 0;
@@ -277,7 +284,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AA9D1EDD207A9DEE005AA382 /* Build configuration list for PBXProject "scribbleNatie" */;
+			buildConfigurationList = AA9D1EDD207A9DEE005AA382 /* Build configuration list for PBXProject "scribbleNative" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -672,7 +679,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA9D1EDD207A9DEE005AA382 /* Build configuration list for PBXProject "scribbleNatie" */ = {
+		AA9D1EDD207A9DEE005AA382 /* Build configuration list for PBXProject "scribbleNative" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA9D1F08207A9DF0005AA382 /* Debug */,
