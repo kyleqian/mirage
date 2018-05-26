@@ -81,7 +81,7 @@ public class SocketHost : MonoBehaviour
         {
             totalConnections += h.Sessions.Count;
         }
-        
+
         print("Total websocket connections: " + totalConnections);
 
         if (totalConnections == wssv.WebSocketServices.Count)
@@ -102,17 +102,22 @@ public class SocketHost : MonoBehaviour
 
     void StartBroadcastIp()
     {
-        broadcasting = true;
+        // Reset all previous connections
+        // wssv.Stop();
+        // wssv.Start();
+
+        // Start UDP broadcast
         udpClient = new UdpClient(9002, AddressFamily.InterNetwork);
 		udpClient.Connect(new IPEndPoint(IPAddress.Broadcast, 9003));
 		InvokeRepeating("BroadcastIp", 0, 0.2f);
+        broadcasting = true;
     }
 
     void StopBroadcastIp()
     {
-        broadcasting = false;
         udpClient.Close();
         CancelInvoke("BroadcastIp");
+        broadcasting = false;
     }
 
     void BroadcastIp()

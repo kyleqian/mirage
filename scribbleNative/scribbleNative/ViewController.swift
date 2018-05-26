@@ -21,6 +21,7 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
     var volumeButtonHandler: JPSVolumeButtonHandler?
     var rotationSocket: WebSocket!
     var inputSocket: WebSocket!
+    var connected = false
     
     // UDP broadcast receiver
     var broadcastSocket: GCDAsyncUdpSocket!
@@ -51,6 +52,8 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
+        guard connected == false else { return }
+        
         // Use IP address to create WebSocket connections
         initWebsocketConnections(ip: String(data: data, encoding: .utf8)!)
         
@@ -61,6 +64,7 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
     func initWebsocketConnections(ip: String) {
         rotationSocket = WebSocket(url: URL(string: "ws://\(ip):9001/M_Rotation")!)
         inputSocket = WebSocket(url: URL(string: "ws://\(ip):9001/M_Input")!)
+        connected = true
         
         let upBlock = { () -> Void in
             self.sendText(text: "UP_PRESS")
@@ -129,6 +133,7 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
     }
     
     func sendJSON(json: JSON ) {
+        guard connected == true else { return }
         self.inputSocket.write(string: json.rawString()!)
     }
     
