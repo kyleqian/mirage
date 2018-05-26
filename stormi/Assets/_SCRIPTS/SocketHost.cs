@@ -29,7 +29,6 @@ public class M_Input : WebSocketBehavior
     protected override void OnMessage(MessageEventArgs e)
     {
         SocketHost.instance.curText = e.Data;
-
 		SocketHost.InvokeReceivedMessage(JsonUtility.FromJson<JSONData>(e.Data));
     }
 }
@@ -47,6 +46,7 @@ public class SocketHost : MonoBehaviour
 
     WebSocketServer wssv;
     UdpClient udpClient;
+    bool broadcasting;
 
     void Awake()
     {
@@ -70,18 +70,50 @@ public class SocketHost : MonoBehaviour
         // Listen for connections
         wssv.Start();
 
-        // Find the controller
-        StartBroadcastIp();
+        // Turn on/off broadcasting
+        InvokeRepeating("BroadcastWatchman", 0, 0.5f);
+    }
+
+    void BroadcastWatchman()
+    {
+        int totalConnections = 0;
+        foreach (var h in wssv.WebSocketServices.Hosts)
+        {
+            totalConnections += h.Sessions.Count;
+        }
+        
+        print("Total websocket connections: " + totalConnections);
+
+        if (totalConnections == wssv.WebSocketServices.Count)
+        {
+            if (broadcasting)
+            {
+                StopBroadcastIp();
+            }
+        }
+        else
+        {
+            if (!broadcasting)
+            {
+                StartBroadcastIp();
+            }
+        }
     }
 
     void StartBroadcastIp()
-	{
-		udpClient = new UdpClient(9002, AddressFamily.InterNetwork);
+    {
+        broadcasting = true;
+        udpClient = new UdpClient(9002, AddressFamily.InterNetwork);
 		udpClient.Connect(new IPEndPoint(IPAddress.Broadcast, 9003));
-
-        // TODO: Stop broadcasting?
 		InvokeRepeating("BroadcastIp", 0, 0.2f);
-	}
+    }
+
+    void StopBroadcastIp()
+    {
+        broadcasting = false;
+        udpClient.Close();
+        CancelInvoke("BroadcastIp");
+    }
 
     void BroadcastIp()
     {
