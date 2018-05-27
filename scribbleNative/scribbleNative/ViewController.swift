@@ -35,7 +35,6 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
         scribbleView.delegate = self
         portraitView.delegate = self
         
-        // TODO: Disable functionality before IP address is obtained
         // Receive IP address
         receiveBroadcast()
     }
@@ -53,18 +52,18 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
         guard connected == false else { return }
-        
-        // Use IP address to create WebSocket connections
-        initWebsocketConnections(ip: String(data: data, encoding: .utf8)!)
+        connected = true
         
         // Stop listening to broadcast
         broadcastSocket.close()
+        
+        // Use IP address to create WebSocket connections
+        initWebsocketConnections(ip: String(data: data, encoding: .utf8)!)
     }
     
     func initWebsocketConnections(ip: String) {
         rotationSocket = WebSocket(url: URL(string: "ws://\(ip):9001/M_Rotation")!)
         inputSocket = WebSocket(url: URL(string: "ws://\(ip):9001/M_Input")!)
-        connected = true
         
         let upBlock = { () -> Void in
             self.sendText(text: "UP_PRESS")
