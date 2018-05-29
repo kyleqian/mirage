@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -66,6 +66,27 @@
 			remoteGlobalIDString = 49442B834B6726B7A1387CC4B226F143;
 			remoteInfo = JPSVolumeButtonHandler;
 		};
+		5296A2A220BD22FD001007AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5296A29C20BD22FD001007AF /* scribbleNative.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AA9D1EE2207A9DEE005AA382;
+			remoteInfo = scribbleNative;
+		};
+		5296A2A420BD22FD001007AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5296A29C20BD22FD001007AF /* scribbleNative.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AA9D1EF6207A9DF0005AA382;
+			remoteInfo = scribbleNativeTests;
+		};
+		5296A2A620BD22FD001007AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5296A29C20BD22FD001007AF /* scribbleNative.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AA9D1F01207A9DF0005AA382;
+			remoteInfo = scribbleNativeUITests;
+		};
 		978D0A118A26E5FA168F86E47498B77F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -105,7 +126,7 @@
 		166B4CB4C9BB234074B9CF18E8330B18 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		18DEF01CC2F1368F90BAB65FF959CAED /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		19D24BB72260487BC79739EBDCD7BC8C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1E19344C824AE5DE4177A254676722B4 /* Pods_scribbleNative.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_scribbleNative.framework; path = "Pods-scribbleNative.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E19344C824AE5DE4177A254676722B4 /* Pods_scribbleNative.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_scribbleNative.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E6239C07073ECFA07D56B87F6ADE8EA /* Starscream.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Starscream.xcconfig; sourceTree = "<group>"; };
 		23B7E13E77BB35FED64945107A8F58BC /* JPSVolumeButtonHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JPSVolumeButtonHandler.m; path = JPSVolumeButtonHandler/JPSVolumeButtonHandler.m; sourceTree = "<group>"; };
 		29FC3933113555C4DE1A8A61C2F21B32 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
@@ -120,12 +141,13 @@
 		4BC7D0466C61C1E192BB8EFDEEA2D9A8 /* Pods-scribbleNative-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-scribbleNative-acknowledgements.plist"; sourceTree = "<group>"; };
 		5100389911475FC43144C68F7EA8D3B8 /* Pods-scribbleNative-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-scribbleNative-frameworks.sh"; sourceTree = "<group>"; };
 		516D7F9FE8F154F9ABDAF28120D20876 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		5296A29C20BD22FD001007AF /* scribbleNative.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = scribbleNative.xcodeproj; path = ../scribbleNative.xcodeproj; sourceTree = "<group>"; };
 		52AC3B04EC90D35A02D52460C1B1FC53 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		58CEF3CCC88A4AC895BACF60F1534202 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		5B7339B4BFC23D59C6B49B9146703E72 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = Source/GCD/GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
 		5DF7C0E3E294969EFC038BA2F2C94E7C /* JPSVolumeButtonHandler-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JPSVolumeButtonHandler-prefix.pch"; sourceTree = "<group>"; };
 		5DFCEA708FAB75B23E6B3FD6432D4B9B /* JPSVolumeButtonHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JPSVolumeButtonHandler.h; path = JPSVolumeButtonHandler/JPSVolumeButtonHandler.h; sourceTree = "<group>"; };
-		60BA1AFF1CC527E6FB7B78AD2278DF54 /* JPSVolumeButtonHandler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JPSVolumeButtonHandler.framework; path = JPSVolumeButtonHandler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60BA1AFF1CC527E6FB7B78AD2278DF54 /* JPSVolumeButtonHandler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JPSVolumeButtonHandler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61BC0A62C92AC84A226057B9390AE879 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		707B11664295AC299011C0E93EE1C330 /* SSLSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SSLSecurity.swift; path = Sources/SSLSecurity.swift; sourceTree = "<group>"; };
 		720AD8528ED725CD9BB15D1CAC247930 /* Pods-scribbleNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-scribbleNative.release.xcconfig"; sourceTree = "<group>"; };
@@ -133,18 +155,18 @@
 		739B749AB3ACA4F997250E558620AEB8 /* Starscream.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Starscream.modulemap; sourceTree = "<group>"; };
 		763A9F4AB595C52EF0ECA86FE17ABC60 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
 		789DEF5A5F48B086EB3585CAD7882D98 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
-		79A8EB3646548A5FB2E1F7FA0F4CF179 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79A8EB3646548A5FB2E1F7FA0F4CF179 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE4662B52BDD982EA2DA5424100E394 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
 		7DF21801D1B560C6517F17756C1C6958 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
-		7F97F4F1FC6B5C7C07E09A82DB250F8D /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CocoaAsyncSocket.framework; path = CocoaAsyncSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F97F4F1FC6B5C7C07E09A82DB250F8D /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaAsyncSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83C170BC97BA03A9207FE81A11F65025 /* Starscream-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Starscream-dummy.m"; sourceTree = "<group>"; };
 		86960FE802F6C990D546287D46F5AF5D /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		87D60875B15121FA33D1BC88985E0EA8 /* Starscream-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-prefix.pch"; sourceTree = "<group>"; };
-		8E857C6DD809E7EEB61EFBDA1E193C48 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E857C6DD809E7EEB61EFBDA1E193C48 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD0980154DBEE286959BA1AD1A839AA /* CocoaAsyncSocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaAsyncSocket-dummy.m"; sourceTree = "<group>"; };
 		905F414EFC6FAAA2386BA3FC0B5D9205 /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
 		93A058B4FAFD991A170EDB0D0CEA2EB5 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		95110C9AA6C0D5BC346830070BF45336 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
 		96E8EE2BA1CC2C10107C7DB5B8DBA0FF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		9797249AA8C30E711B97EC9BFD5B60EF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -164,7 +186,7 @@
 		CB37C8ED3A5846971ABF8387FD69AF5E /* JPSVolumeButtonHandler.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JPSVolumeButtonHandler.xcconfig; sourceTree = "<group>"; };
 		CD425E2B5B49422CFD080EB9264D52F2 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		D2926DAD92C72F662CFC6D3311A5F97A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
-		D48EC3A908A9F87C06D0453AF78F6EAA /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Starscream.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D48EC3A908A9F87C06D0453AF78F6EAA /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D80B5D8A89F6DEDF143EB2A642D6873A /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
 		D8B9FEE9AC9616723ED7AEABE08F8D5C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD057BCF54258A99436FBC199DE08093 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -281,7 +303,6 @@
 				23B7E13E77BB35FED64945107A8F58BC /* JPSVolumeButtonHandler.m */,
 				83B2095DDD1A619BAE61E17285F39D93 /* Support Files */,
 			);
-			name = JPSVolumeButtonHandler;
 			path = JPSVolumeButtonHandler;
 			sourceTree = "<group>";
 		};
@@ -307,7 +328,6 @@
 				52AC3B04EC90D35A02D52460C1B1FC53 /* Validation.swift */,
 				87FA020009B2D3A02D2438FE80D7342C /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -335,6 +355,16 @@
 				96E8EE2BA1CC2C10107C7DB5B8DBA0FF /* Security.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		5296A29D20BD22FD001007AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5296A2A320BD22FD001007AF /* scribbleNative.app */,
+				5296A2A520BD22FD001007AF /* scribbleNativeTests.xctest */,
+				5296A2A720BD22FD001007AF /* scribbleNativeUITests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -379,6 +409,7 @@
 		882D5ACA1D5693E132963BD68C63F981 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				5296A29C20BD22FD001007AF /* scribbleNative.xcodeproj */,
 				05277590BABFA2EC9F909607C6AB331C /* Pods-scribbleNative */,
 			);
 			name = "Targets Support Files";
@@ -406,7 +437,6 @@
 				98E1BF93C566C6F386245C61BD535F64 /* GCDAsyncUdpSocket.m */,
 				4BA785B4137745AC49CC4D745970B10B /* Support Files */,
 			);
-			name = CocoaAsyncSocket;
 			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
@@ -418,7 +448,6 @@
 				A90DFB4639F140457031D72BBB87FFF8 /* WebSocket.swift */,
 				F5A38BE81FD5BFCBA6DBE2508451E746 /* Support Files */,
 			);
-			name = Starscream;
 			path = Starscream;
 			sourceTree = "<group>";
 		};
@@ -454,7 +483,6 @@
 				A48844CC3C90BD7EEA6DDD6820D46D33 /* SwiftyJSON.swift */,
 				08EB5150F3EC4449558CED94F9376947 /* Support Files */,
 			);
-			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -641,6 +669,12 @@
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
 			productRefGroup = 8E1F1EE0FD6A7C19D72A75B5001483EF /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5296A29D20BD22FD001007AF /* Products */;
+					ProjectRef = 5296A29C20BD22FD001007AF /* scribbleNative.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */,
@@ -652,6 +686,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5296A2A320BD22FD001007AF /* scribbleNative.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = scribbleNative.app;
+			remoteRef = 5296A2A220BD22FD001007AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5296A2A520BD22FD001007AF /* scribbleNativeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = scribbleNativeTests.xctest;
+			remoteRef = 5296A2A420BD22FD001007AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5296A2A720BD22FD001007AF /* scribbleNativeUITests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = scribbleNativeUITests.xctest;
+			remoteRef = 5296A2A620BD22FD001007AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		234E0F55A2439DB52764F070F4C15D6E /* Sources */ = {

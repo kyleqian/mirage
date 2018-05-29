@@ -57,16 +57,31 @@ public class StickyPad : MonoBehaviour {
 //		textBox.text = SocketHost.instance.curText;
 	}
 
+	public void draw(string strokesString) {
+	}
+
 	public void addSpace() {
 		currentText += " ";
 	}
 
+	public void toggleAddSticky() {
+		shouldAddSticky = true;
+	}
+
+	public void deleteLastWord() {
+		currentText = textBox.text.Substring(0, getBeforeLastWordIndex(textBox.text.TrimEnd()) + 1);
+	}
+
+	public void write(string lastText) {
+		currentText += lastText;
+	}
+
 	private void addSticky() {
 		// Get the current pointing location to board
-//		RaycastHit hit;
+		//		RaycastHit hit;
 
-//		if (Physics.Raycast (transform.position, transform.forward, out hit, Mathf.Infinity)) {
-//			if (hit.transform.tag == "Board") {
+		//		if (Physics.Raycast (transform.position, transform.forward, out hit, Mathf.Infinity)) {
+		//			if (hit.transform.tag == "Board") {
 
 
 		// Place the sticky randomly on the whiteboard
@@ -88,20 +103,8 @@ public class StickyPad : MonoBehaviour {
 
 		// Reset the current sticky pad text
 		wipeStickyPad();
-//			}
-//		}
-	}
-
-	public void toggleAddSticky() {
-		shouldAddSticky = true;
-	}
-
-	public void deleteLastWord() {
-		currentText = textBox.text.Substring(0, getBeforeLastWordIndex(textBox.text.TrimEnd()) + 1);
-	}
-
-	public void write(string lastText) {
-		currentText += lastText;
+		//			}
+		//		}
 	}
 
 	private int getBeforeLastWordIndex(string words) {

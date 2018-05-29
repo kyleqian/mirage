@@ -82,9 +82,6 @@ class ScribbleView: UIView {
         
         lastPoint = currentPoint
         setNeedsDisplay()
-        
-        // Send the strokes to Stormi
-        delegate?.sendStrokes(strokes: trace)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -114,6 +111,9 @@ class ScribbleView: UIView {
         
         addToCurPath(point: currentPoint)
         addCurPathToTrace()
+        
+        // Send the strokes to Stormi
+        delegate?.sendStrokes(strokes: trace)
         
         timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { (timer) in
             //Do stuff 15ms later

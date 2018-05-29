@@ -87,6 +87,7 @@ public class Phone : MonoBehaviour
 				// Received text
 				break;
 			case STROKES:
+				stickyPad.draw (data.strokes);
 				break;
 			}
 		}
