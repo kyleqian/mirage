@@ -126,15 +126,16 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
         sendJSON(json: JSON(textJSONified))
     }
     
-    func sendStrokes(strokes: [[Float]]) {
+    func sendStrokes(strokes: [[[Float]]]) {
         var strokesJSONified = JSON_CONSTANTS.SEND_STROKES
         strokesJSONified["strokes"] = JSON(strokes).rawString()
+        print(strokesJSONified)
+        
         sendJSON(json: JSON(strokesJSONified))
     }
     
     func sendJSON(json: JSON ) {
         guard connected == true else { return }
-        print(json.rawString()!)
         self.inputSocket.write(string: json.rawString()!)
     }
     

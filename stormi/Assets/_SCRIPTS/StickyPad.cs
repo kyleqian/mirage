@@ -20,14 +20,18 @@ public class StickyPad : MonoBehaviour {
 	private Vector3 whiteboardSize;
 	private const float PHONE_WIDTH = 800f;
 	private const float PHONE_HEIGHT = 600f;
-
-//	void OnEnable() {
-//
-//	}
-//
-//	void OnDisable() {
-//
-//	}
+	private const string TEST_STROKES = "[\n" +
+		"[\n" +
+		"[\n" +
+		"2\n" +
+		"4\n" +
+		"],\n" +
+		"[\n" +
+		"3,\n" +
+		"5,\n" +
+		"]\n" +
+		"]\n" +
+		"]\n";
 
 	void Start () {
         // Get the canvas, then get the text object, then get the text component
@@ -58,9 +62,8 @@ public class StickyPad : MonoBehaviour {
 //		textBox.text = SocketHost.instance.curText;
 	}
 
-	public List<float[]> draw(string strokesString) {
-		List<float[]> strokesArr = strokeStringToArr (strokesString);
-
+	public List<List<List<float>>> draw(string strokesString) {
+		List<List<List<float>>> strokesArr = deserializeStrokesString (strokesString);
 
 		return strokesArr;
 	}
@@ -81,33 +84,114 @@ public class StickyPad : MonoBehaviour {
 		currentText += lastText;
 	}
 
-	private List<float[]> strokeStringToArr(string strokesString) {
-		string[] strokesStringSplit = strokesString.Split (
-			                              new [] { Environment.NewLine },
-			                              StringSplitOptions.None
-		                              );
+	private List<List<List<float>>> deserializeHelper(string[] strokesStrings) {
+		int level = 0;
+		List<List<List<float>>> strokes = new List<List<List<float>>> ();
+		List<List<float>> curStroke = new List<List<float>> ();
 
-		// Init an array
-		List<float[]> strokePoints = new List<float[]> ();
+		for (int i = 0; i < strokesStrings.Length - 1; i++) {
+			string curElem = strokesStrings [i].Trim ().TrimEnd (new char[] { ',' });
+			Debug.Log ("Current element at line 90 " + curElem);
+			Debug.Log ("Level at line 90 " + level);
 
-		// Ignore the first and last elements b/c they are just the opening and closing brackets
-		float [] curPoint = new float[2];
-		char[] charsToTrim = { ',' };
-		for (int i = 1; i < strokesStringSplit.Length - 1; i++) {
-			string strokeElem = strokesStringSplit [i].Trim ().TrimEnd(charsToTrim); 
+			if (level == 0 && curElem == "[") {
+				level += 1;
+			} else if (level == 1) {
+				if (curElem == "[") {
+					level += 1;
+				} else if (curElem == "]") {
+					
+					level -= 1;
+				}
+			} else if (level == 2) {
+				if (curElem == "[") {
+					level += 1;
+				} else if (curElem == "]") {
+					// Reached the end of the current stroke
+					strokes.Add (curStroke);
+					curStroke = new List<List<float>> ();
 
-			if (strokeElem.Equals("[")) {
-				curPoint [0] = float.Parse(strokesStringSplit[i + 1].TrimEnd(charsToTrim));
-				curPoint [1] = float.Parse(strokesStringSplit[i + 2]);
-			} 
-			else if (strokeElem == "]") {
+					level -= 1;
+				}
+			}
+			else if (level == 3) {
 
-				strokePoints.Add ((float [])curPoint.Clone());
+				List<float> curList = new List<float> ();
+
+
+				while (curElem != "]") {
+					curList.Add (float.Parse(curElem));
+
+					i += 1;
+					curElem = strokesStrings [i].Trim ().TrimEnd (new char[] { ',' });
+				}
+
+				curStroke.Add (curList);
+				level -= 1;
 			}
 		}
 
-		return strokePoints;
+		return strokes;
+
 	}
+
+	private List<List<List<float>>> deserializeStrokesString(string strokesString) {
+		strokesString = strokesString.Trim ().TrimEnd (new char[] { ',' });
+		Debug.Log (strokesString);
+		string[] strokesStringSplit = strokesString.Split (
+						                              new [] { Environment.NewLine },
+						                              StringSplitOptions.None
+					                              );
+
+		// Init an array
+		return deserializeHelper (strokesStringSplit);
+	}
+
+//	private List<List<float[]>> strokeStringToArr(string strokesString) {
+//		string[] strokesStringSplit = strokesString.Split (
+//			                              new [] { Environment.NewLine },
+//			                              StringSplitOptions.None
+//		                              );
+//
+//		// Init an array
+//		List<List<float[]>> strokePoints = new List<List<float[]>> ();
+//
+//		int bracketCount = 0;
+//		float [] curPoint = new float[2];
+//		char[] charsToTrim = { ',' };
+//		// Ignore the first and last elements b/c they are just the opening and closing brackets
+//		for (int i = 1; i < strokesStringSplit.Length - 1; i++) {
+//			string strokeElem = strokesStringSplit [i].Trim ().TrimEnd(charsToTrim);
+//
+//			if (strokeElem == "[") {
+//				bracketCount++;
+//			} else if (strokeElem == "]") {
+//				bracketCount--;
+//			}
+//
+//			if (bracketCount == 2 && strokeElem == "[") {
+//				// Next is a list of x points and a list of y points
+//				string curValue = strokesStringSplit[i].Trim().TrimEnd(charsToTrim); 
+//
+//				// First get the list of x points
+//				while (curValue != "]") {
+//					br
+//				}
+//
+//			} 
+//
+////			else if (bracketCount == 2 && strokeElem == "]") {
+////				// Two lists are over
+////			} else if (bracketCount == 
+////
+////			curPoint [0] = float.Parse(strokesStringSplit[i + 1].TrimEnd(charsToTrim));
+////			curPoint [1] = float.Parse(strokesStringSplit[i + 2]);
+////
+////			strokePoints.Add ((float [])curPoint.Clone());
+////		}
+//
+//		return strokePoints;
+//	}
 
 	private void addSticky() {
 		// Get the current pointing location to board

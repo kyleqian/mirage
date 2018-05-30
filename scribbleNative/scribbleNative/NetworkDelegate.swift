@@ -11,6 +11,6 @@ import SwiftyJSON
 
 protocol NetworkDelegate: class {
     func sendText(text: String)
-    func sendStrokes(strokes : [[Float]])
+    func sendStrokes(strokes : [[[Float]]])
     func sendJSON(json : JSON)
 }

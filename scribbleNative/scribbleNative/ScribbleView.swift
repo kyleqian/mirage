@@ -23,7 +23,7 @@ class ScribbleView: UIView {
     
     // This is for now to send to the recognitionAPI. Should be integrated with strokes
     var trace : [[[Float]]] = []
-    var traceForStormi : [[Float]] = []
+//    var traceForStormi : [[Float]] = []
     var curPath = Path()
     
     // For timer:
@@ -114,7 +114,7 @@ class ScribbleView: UIView {
         addCurPathToTrace()
         
         // Send the strokes to Stormi
-        delegate?.sendStrokes(strokes: traceForStormi)
+        delegate?.sendStrokes(strokes: trace)
         
         timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { (timer) in
             //Do stuff 15ms later
@@ -149,17 +149,17 @@ class ScribbleView: UIView {
         curPath.yCoods.append(Float(point.y))
     }
     
-    func addCurPathToTraceForStormi() {
-        var path : [[Float]] = []
-        for ind in 0..<curPath.xCoods.count {
-            path.append([curPath.xCoods[ind], curPath.yCoods[ind]])
-        }
-        traceForStormi += path
-    }
+//    func addCurPathToTraceForStormi() {
+//        var path : [[Float]] = []
+//        for ind in 0..<curPath.xCoods.count {
+//            path.append([curPath.xCoods[ind], curPath.yCoods[ind]])
+//        }
+//        traceForStormi += path
+//    }
     
     func addCurPathToTrace() {
         trace.append([curPath.xCoods, curPath.yCoods])
-        addCurPathToTraceForStormi()
+//        addCurPathToTraceForStormi()
         
         // reset current path
         curPath = Path()
