@@ -18,6 +18,8 @@ public class StickyPad : MonoBehaviour {
 	private bool shouldAddSticky = false;
 	private System.Random random;
 	private Vector3 whiteboardSize;
+	private const float PHONE_WIDTH = 800f;
+	private const float PHONE_HEIGHT = 600f;
 
 //	void OnEnable() {
 //
@@ -42,7 +44,6 @@ public class StickyPad : MonoBehaviour {
 			addSticky ();
 			shouldAddSticky = false;
 		}
-
 //		switch (state) {
 //		case StickyPadState.DELETE:
 //			
@@ -57,7 +58,11 @@ public class StickyPad : MonoBehaviour {
 //		textBox.text = SocketHost.instance.curText;
 	}
 
-	public void draw(string strokesString) {
+	public List<float[]> draw(string strokesString) {
+		List<float[]> strokesArr = strokeStringToArr (strokesString);
+
+
+		return strokesArr;
 	}
 
 	public void addSpace() {
@@ -74,6 +79,34 @@ public class StickyPad : MonoBehaviour {
 
 	public void write(string lastText) {
 		currentText += lastText;
+	}
+
+	private List<float[]> strokeStringToArr(string strokesString) {
+		string[] strokesStringSplit = strokesString.Split (
+			                              new [] { Environment.NewLine },
+			                              StringSplitOptions.None
+		                              );
+
+		// Init an array
+		List<float[]> strokePoints = new List<float[]> ();
+
+		// Ignore the first and last elements b/c they are just the opening and closing brackets
+		float [] curPoint = new float[2];
+		char[] charsToTrim = { ',' };
+		for (int i = 1; i < strokesStringSplit.Length - 1; i++) {
+			string strokeElem = strokesStringSplit [i].Trim ().TrimEnd(charsToTrim); 
+
+			if (strokeElem.Equals("[")) {
+				curPoint [0] = float.Parse(strokesStringSplit[i + 1].TrimEnd(charsToTrim));
+				curPoint [1] = float.Parse(strokesStringSplit[i + 2]);
+			} 
+			else if (strokeElem == "]") {
+
+				strokePoints.Add ((float [])curPoint.Clone());
+			}
+		}
+
+		return strokePoints;
 	}
 
 	private void addSticky() {

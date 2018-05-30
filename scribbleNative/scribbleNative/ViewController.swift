@@ -35,8 +35,12 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
         scribbleView.delegate = self
         portraitView.delegate = self
         
-        // Receive IP address
-        receiveBroadcast()
+//        // Receive IP address
+//        receiveBroadcast()
+        
+        // TODO: Remove. Temp fix for Stanford Residences network
+        connected = true
+        initWebsocketConnections(ip: "10.31.241.27")
     }
     
     func receiveBroadcast() {
@@ -122,15 +126,15 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
         sendJSON(json: JSON(textJSONified))
     }
     
-    func sendStrokes(strokes: [[[Float]]]) {
+    func sendStrokes(strokes: [[Float]]) {
         var strokesJSONified = JSON_CONSTANTS.SEND_STROKES
         strokesJSONified["strokes"] = JSON(strokes).rawString()
-        print(strokes)
         sendJSON(json: JSON(strokesJSONified))
     }
     
     func sendJSON(json: JSON ) {
         guard connected == true else { return }
+        print(json.rawString()!)
         self.inputSocket.write(string: json.rawString()!)
     }
     

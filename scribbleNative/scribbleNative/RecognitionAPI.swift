@@ -30,7 +30,6 @@ class RecognitionAPI {
         ]
         
         Alamofire.request(googleAPIEndpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
-
             // Get the body of JSON response
             if let data = response.data {
                 let jsonResponse = JSON.init(parseJSON: String(data: data, encoding: .utf8)!)
