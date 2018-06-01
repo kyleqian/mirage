@@ -18,7 +18,7 @@ public class StickyPad : MonoBehaviour {
 	// janky because we're mixing state with events
 	private bool shouldAddSticky = false;
 	private bool shouldDraw = false;
-	private List<List<List<float>>> strokesArr = new List<List<List<float>>>();
+	private List<List<List<float>>> strokes = new List<List<List<float>>>();
 
 	private System.Random random;
 	private Vector3 whiteboardSize;
@@ -55,7 +55,12 @@ public class StickyPad : MonoBehaviour {
 
 		if (shouldDraw) {
 			// For each stroke, draw a line through all its points
-			Instantiate(stroke, new Vector3(0, 0, 0), Quaternion.identity);
+//			foreach (List<List<float>> stroke in strokes) {
+//				// Two lists here. First is x points, next is y points
+//
+//			}
+			Transform newStroke = Instantiate(stroke, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+			newStroke.parent = gameObject.transform;
 			shouldDraw = false;
 		}
 //		switch (state) {
@@ -73,7 +78,7 @@ public class StickyPad : MonoBehaviour {
 	}
 
 	public void draw(string strokesString) {
-		strokesArr = deserializeStrokesString (strokesString);
+		strokes = deserializeStrokesString (strokesString);
 		shouldDraw = true;
 	}
 
