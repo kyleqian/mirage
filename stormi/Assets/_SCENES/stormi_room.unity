@@ -699,6 +699,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114145391608786654, guid: d829f8b1e5321409c83cdb0b5bf4087b,
+        type: 2}
+      propertyPath: stroke
+      value: 
+      objectReference: {fileID: 4997525843896030, guid: c270b2337d1db49e48913166768f9730,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d829f8b1e5321409c83cdb0b5bf4087b, type: 2}
   m_IsPrefabParent: 0

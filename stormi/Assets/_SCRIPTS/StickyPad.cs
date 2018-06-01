@@ -10,16 +10,20 @@ public class StickyPad : MonoBehaviour {
 //	public StickyPadState state;
 	public GameObject NewStickyPrefab;
 	public GameObject whiteboard;
+	public Transform stroke;
 
 	// source of truth for current text
 	private string currentText;
 	private Text textBox;
 	// janky because we're mixing state with events
 	private bool shouldAddSticky = false;
+	private bool shouldDraw = false;
+	private List<List<List<float>>> strokesArr = new List<List<List<float>>>();
+
 	private System.Random random;
 	private Vector3 whiteboardSize;
-	private const float PHONE_WIDTH = 800f;
-	private const float PHONE_HEIGHT = 600f;
+	private const float PHONE_WIDTH = 600f;
+	private const float PHONE_HEIGHT = 400f;
 	private const string TEST_STROKES = "[\n" +
 		"[\n" +
 		"[\n" +
@@ -48,6 +52,12 @@ public class StickyPad : MonoBehaviour {
 			addSticky ();
 			shouldAddSticky = false;
 		}
+
+		if (shouldDraw) {
+			// For each stroke, draw a line through all its points
+			Instantiate(stroke, new Vector3(0, 0, 0), Quaternion.identity);
+			shouldDraw = false;
+		}
 //		switch (state) {
 //		case StickyPadState.DELETE:
 //			
@@ -62,10 +72,9 @@ public class StickyPad : MonoBehaviour {
 //		textBox.text = SocketHost.instance.curText;
 	}
 
-	public List<List<List<float>>> draw(string strokesString) {
-		List<List<List<float>>> strokesArr = deserializeStrokesString (strokesString);
-
-		return strokesArr;
+	public void draw(string strokesString) {
+		strokesArr = deserializeStrokesString (strokesString);
+		shouldDraw = true;
 	}
 
 	public void addSpace() {
@@ -91,8 +100,6 @@ public class StickyPad : MonoBehaviour {
 
 		for (int i = 0; i < strokesStrings.Length - 1; i++) {
 			string curElem = strokesStrings [i].Trim ().TrimEnd (new char[] { ',' });
-			Debug.Log ("Current element at line 90 " + curElem);
-			Debug.Log ("Level at line 90 " + level);
 
 			if (level == 0 && curElem == "[") {
 				level += 1;

@@ -40,7 +40,7 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
         
         // TODO: Remove. Temp fix for Stanford Residences network
         connected = true
-        initWebsocketConnections(ip: "10.31.241.27")
+        initWebsocketConnections(ip: "10.31.239.202")
     }
     
     func receiveBroadcast() {
