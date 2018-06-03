@@ -42,6 +42,7 @@ public class Phone : MonoBehaviour
 
 	void OnReceivedMessage(JSONData data)
     {
+		Debug.Log (data.type);
 		if (data.type == ORIENTATION_PORTRAIT)
         {
             state = PhoneState.Controller;

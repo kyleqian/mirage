@@ -11,40 +11,27 @@ public class StrokeMirror : MonoBehaviour {
 	private Vector3 strokeMirrorSize;
 	private const float PHONE_WIDTH = 600f;
 	private const float PHONE_HEIGHT = 400f;
-	private float widthRatio;
-	private float heightRatio;
+	private Vector3 STROKE_DEFAULT = new Vector3(-0.5f, 0.5f, -0.6f);
 
-	public Transform stroke;
+	public Transform strokeObject;
 
 	// Use this for initialization
 	void Start () {
 		strokeMirrorSize = GetComponent<Renderer> ().bounds.size;
 
-
-		widthRatio = strokeMirrorSize.x / PHONE_WIDTH;
-		heightRatio = strokeMirrorSize.y / PHONE_HEIGHT;
+//
+//		widthRatio = strokeMirrorSize.x / PHONE_WIDTH;
+//		heightRatio = strokeMirrorSize.y / PHONE_HEIGHT;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (shouldDraw) {
 			// For each stroke, draw a line through all its points
-			//			foreach (List<List<float>> stroke in strokes) {
-			//				// Two lists here. First is x points, next is y points
-			//
-			//			}
-
-
-			Transform newStroke = Instantiate(stroke);
-			newStroke.parent = gameObject.transform;
-			newStroke.localPosition = Vector3.zero;
-			newStroke.localRotation = Quaternion.identity;
-			newStroke.localScale = Vector3.one;
-
-			// Adjust to phone dimensions
-			newStroke.gameObject.GetComponent<LineRenderer>().useWorldSpace = false;
-			newStroke.gameObject.GetComponent<LineRenderer>().SetPosition(0, new Vector3(-strokeMirrorSize.x, -strokeMirrorSize.y, 0));
-			newStroke.gameObject.GetComponent<LineRenderer>().SetPosition(1, new Vector3(strokeMirrorSize.x, strokeMirrorSize.y, 0));
+			foreach (List<List<float>> stroke in strokes) {
+				// Two lists here. First is x points, next is y points
+				instantiateNewStroke(stroke);
+			}
 
 			shouldDraw = false;
 		}
@@ -53,6 +40,25 @@ public class StrokeMirror : MonoBehaviour {
 	public void draw(string strokesString) {
 		strokes = deserializeStrokesString (strokesString);
 		shouldDraw = true;
+	}
+
+	private void instantiateNewStroke(List<List<float>> stroke) {
+		Transform newStroke = Instantiate(strokeObject);
+		newStroke.parent = gameObject.transform;
+		newStroke.localPosition = STROKE_DEFAULT;
+		newStroke.localRotation = Quaternion.identity;
+		newStroke.localScale = Vector3.one;
+
+		newStroke.gameObject.GetComponent<LineRenderer> ().positionCount = stroke [0].Count;
+
+		for (int i = 0; i < stroke [0].Count; i++) {
+			float xCood = stroke [0] [i];
+			float yCood = stroke [1] [i];
+
+			Debug.Log ("X cood: " + xCood + ", Ycood: " + yCood);
+			// Adjust to phone dimensions
+			newStroke.gameObject.GetComponent<LineRenderer>().SetPosition(i, new Vector3(xCood/PHONE_WIDTH, -yCood/PHONE_HEIGHT, 0f));
+		}
 	}
 
 	private List<List<List<float>>> deserializeHelper(string[] strokesStrings) {

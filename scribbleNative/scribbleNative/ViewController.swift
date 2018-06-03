@@ -35,12 +35,12 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
         scribbleView.delegate = self
         portraitView.delegate = self
         
-//        // Receive IP address
-//        receiveBroadcast()
+        // Receive IP address
+        receiveBroadcast()
         
         // TODO: Remove. Temp fix for Stanford Residences network
-        connected = true
-        initWebsocketConnections(ip: "10.31.239.202")
+//        connected = true
+//        initWebsocketConnections(ip: "10.31.239.202")
     }
     
     func receiveBroadcast() {
@@ -70,7 +70,7 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
         inputSocket = WebSocket(url: URL(string: "ws://\(ip):9001/M_Input")!)
         
         let upBlock = { () -> Void in
-            self.sendText(text: "UP_PRESS")
+            self.sendJSON(json: JSON(JSON_CONSTANTS.UP_PRESS))
             
             if UIDevice.current.orientation == UIDeviceOrientation.portrait {
                 self.resetConnection()
@@ -78,7 +78,8 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
         }
         
         let downBlock = { () -> Void in
-            self.sendText(text: "DOWN_PRESS")
+            self.sendJSON(json: JSON(JSON_CONSTANTS.DOWN_PRESS))
+
         }
         
         volumeButtonHandler = JPSVolumeButtonHandler(up: upBlock, downBlock: downBlock)
