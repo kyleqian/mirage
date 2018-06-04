@@ -130,7 +130,6 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
     func sendStrokes(strokes: [[[Float]]]) {
         var strokesJSONified = JSON_CONSTANTS.SEND_STROKES
         strokesJSONified["strokes"] = JSON(strokes).rawString()
-        print(strokesJSONified)
         
         sendJSON(json: JSON(strokesJSONified))
     }

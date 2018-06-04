@@ -100,4 +100,9 @@ public class StickyPad : MonoBehaviour {
 	private Text getTextboxFromSticky(GameObject sticky) {
 		return sticky.transform.GetChild(0).GetChild(0).GetComponent<Text>();
 	}
+
+	public void enableStickyPad(bool stickyPadState) {
+		gameObject.SetActive (stickyPadState);
+		StrokeMirror.gameObject.SetActive (stickyPadState);
+	}
 }

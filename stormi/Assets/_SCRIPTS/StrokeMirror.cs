@@ -27,6 +27,8 @@ public class StrokeMirror : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (shouldDraw) {
+			eraseCurrentStrokes ();
+
 			// For each stroke, draw a line through all its points
 			foreach (List<List<float>> stroke in strokes) {
 				// Two lists here. First is x points, next is y points
@@ -42,6 +44,12 @@ public class StrokeMirror : MonoBehaviour {
 		shouldDraw = true;
 	}
 
+	private void eraseCurrentStrokes() {
+		foreach (Transform child in gameObject.transform) {
+			Destroy (child.gameObject);
+		}
+	}
+
 	private void instantiateNewStroke(List<List<float>> stroke) {
 		Transform newStroke = Instantiate(strokeObject);
 		newStroke.parent = gameObject.transform;
@@ -55,7 +63,6 @@ public class StrokeMirror : MonoBehaviour {
 			float xCood = stroke [0] [i];
 			float yCood = stroke [1] [i];
 
-			Debug.Log ("X cood: " + xCood + ", Ycood: " + yCood);
 			// Adjust to phone dimensions
 			newStroke.gameObject.GetComponent<LineRenderer>().SetPosition(i, new Vector3(xCood/PHONE_WIDTH, -yCood/PHONE_HEIGHT, 0f));
 		}

@@ -102,6 +102,6 @@ public class Phone : MonoBehaviour
     void UpdateVisibility()
     {
         controller.gameObject.SetActive(state == PhoneState.Controller);
-        stickyPad.gameObject.SetActive(state == PhoneState.Sticky);
+		stickyPad.enableStickyPad (state == PhoneState.Sticky);
     }
 }
