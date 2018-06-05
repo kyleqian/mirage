@@ -23,8 +23,6 @@ class ScribbleView: UIView {
     
     // This is for now to send to the recognitionAPI. Should be integrated with strokes
     var trace : [[[Float]]] = []
-//    var traceForStormi : [[Float]] = []
-//    var curPath = Path()
     
     // For timer:
 //    DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // change 2 to desired number of seconds
@@ -63,7 +61,7 @@ class ScribbleView: UIView {
         let currentPoint = touch.location(in: self)
         lastPoint = currentPoint
 
-        updateTrace(point: currentPoint)
+        updateTrace(point: currentPoint, isNewStroke: true)
         self.delegate?.sendStrokes(strokes: self.trace)
 //        curPath = Path()
 //        addToCurPath(point: currentPoint)
@@ -82,7 +80,7 @@ class ScribbleView: UIView {
         strokes.append(stroke)
         
 //        addToCurPath(point: currentPoint)
-        updateTrace(point: currentPoint)
+        updateTrace(point: currentPoint, isNewStroke: false)
         self.delegate?.sendStrokes(strokes: self.trace)
 
         
@@ -115,9 +113,7 @@ class ScribbleView: UIView {
         lastPoint = nil
         setNeedsDisplay()
         
-        updateTrace(point: currentPoint)
-//        addToCurPath(point: currentPoint)
-//        addCurPathToTrace()
+        updateTrace(point: currentPoint, isNewStroke: false)
         
         // Send the strokes to Stormi
         delegate?.sendStrokes(strokes: trace)
@@ -164,9 +160,8 @@ class ScribbleView: UIView {
 //        traceForStormi += path
 //    }
     
-    func updateTrace(point: CGPoint) {
-        
-        if trace.count == 0 { trace.append([[], []]) }
+    func updateTrace(point: CGPoint, isNewStroke: Bool) {
+        if isNewStroke { trace.append([[], []]) }
         
         // Get the most recent path and append the point there
         trace[trace.count - 1][0].append(Float(point.x))

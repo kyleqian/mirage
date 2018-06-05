@@ -27,11 +27,11 @@ public class StrokeMirror : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (shouldDraw) {
+			Debug.Log ("Staring a new draw with " + strokes.Count + " strokes");
 			eraseCurrentStrokes ();
 
 			// For each stroke, draw a line through all its points
 			foreach (List<List<float>> stroke in strokes) {
-				// Two lists here. First is x points, next is y points
 				instantiateNewStroke(stroke);
 			}
 
@@ -59,6 +59,7 @@ public class StrokeMirror : MonoBehaviour {
 
 		newStroke.gameObject.GetComponent<LineRenderer> ().positionCount = stroke [0].Count;
 
+		// Two lists here. First is x points, next is y points
 		for (int i = 0; i < stroke [0].Count; i++) {
 			float xCood = stroke [0] [i];
 			float yCood = stroke [1] [i];

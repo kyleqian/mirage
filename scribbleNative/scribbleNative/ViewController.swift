@@ -35,12 +35,12 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
         scribbleView.delegate = self
         portraitView.delegate = self
         
-//        // Receive IP address
-//        receiveBroadcast()
+        // Receive IP address
+        receiveBroadcast()
         
-//         TODO: Remove. Temp fix for Stanford Residences network
-        connected = true
-        initWebsocketConnections(ip: "10.31.242.110")
+////         TODO: Remove. Temp fix for Stanford Residences network
+//        connected = true
+//        initWebsocketConnections(ip: "10.31.242.110")
     }
     
     func receiveBroadcast() {
