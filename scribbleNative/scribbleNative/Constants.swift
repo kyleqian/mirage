@@ -15,6 +15,8 @@ struct JSON_CONSTANTS {
     static let SEND_STROKES = ["type": "SEND_STROKES"]
     static let DOWN_PRESS = ["type": "DOWN_PRESS"]
     static let UP_PRESS = ["type": "UP_PRESS"]
+    static let PORTRAIT_TOUCH_BEGAN = ["type": "PORTRAIT_TOUCH_BEGAN"]
+    static let PORTRAIT_TOUCH_ENDED = ["type": "PORTRAIT_TOUCH_ENDED"]
     static let ORIENTATION_LANDSCAPE = ["type": "ORIENTATION_LANDSCAPE"]
     static let ORIENTATION_PORTRAIT = ["type": "ORIENTATION_PORTRAIT"]    
 }
