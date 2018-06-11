@@ -51,8 +51,14 @@ public class StickyPad : MonoBehaviour {
 		shouldAddSticky = true;
 	}
 
+    // TODO: Changed to deleting last character
 	public void deleteLastWord() {
-		currentText = textBox.text.Substring(0, getBeforeLastWordIndex(textBox.text.TrimEnd()) + 1);
+		//currentText = textBox.text.Substring(0, getBeforeLastWordIndex(textBox.text.TrimEnd()) + 1);
+
+        if (currentText.Length > 0)
+        {
+            currentText = currentText.Substring(0, currentText.Length - 1);
+        }
 	}
 
 	public void write(string lastText) {
