@@ -36,11 +36,11 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
         portraitView.delegate = self
         
         // Receive IP address
-        receiveBroadcast()
+//        receiveBroadcast()
         
-////         TODO: Remove. Temp fix for Stanford Residences network
-//        connected = true
-//        initWebsocketConnections(ip: "10.31.242.110")
+//         TODO: Remove. Temp fix for Stanford Residences network
+        connected = true
+        initWebsocketConnections(ip: "172.20.10.4")
     }
     
     func receiveBroadcast() {
@@ -94,7 +94,7 @@ class ViewController: UIViewController, NetworkDelegate, GCDAsyncUdpSocketDelega
         motionManager.stopDeviceMotionUpdates()
 
         // The hackiest of them all
-        usleep(250000)
+        usleep(300000)
         
         rotationSocket.connect()
         inputSocket.connect()
